@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { access, readFile, stat } from 'node:fs/promises';
+import { access, readFile, readdir, stat } from 'node:fs/promises';
 import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,10 +18,17 @@ assert.match(html, /<div id="root"><\/div>/, 'The published page must contain th
 assert.match(html, /Joshua D\. Parker/, 'The published page title must identify the portfolio, not the repository landing page.');
 assert.doesNotMatch(html, /Jekyll|github-pages-build/, 'The output must not be a generated Jekyll landing page.');
 
+const rootEntries = (await readdir(outputDir)).sort();
+assert.deepEqual(
+  rootEntries,
+  ['.nojekyll', '404.html', 'assets', 'index.html', 'robots.txt', 'script.js', 'styles.css'].sort(),
+  'The published branch must contain only the flat Viewer site files, route fallback, and website support files.',
+);
+
 const noJekyllPath = resolve(outputDir, '.nojekyll');
 await access(noJekyllPath);
 
-const contentFilePath = resolve(outputDir, 'portfolio-content.json');
+const contentFilePath = resolve(outputDir, 'assets', 'portfolio-content.json');
 const contentFile = await readFile(contentFilePath, 'utf8');
 assert.ok(Buffer.byteLength(contentFile) <= 1_000_000, 'Published portfolio content must stay under 1 MB.');
 const contentFileData = JSON.parse(contentFile);
@@ -40,9 +47,10 @@ if (contentFileData !== null) {
 const resources = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
   .map((match) => match[1])
   .filter((path) => path.startsWith(base) && path !== base);
-const assetResources = resources.filter((path) => path.includes('/assets/'));
-assert.ok(assetResources.some((path) => path.endsWith('.js')), 'The HTML must reference a JavaScript bundle under the configured Pages base.');
-assert.ok(assetResources.some((path) => path.endsWith('.css')), 'The HTML must reference a CSS bundle under the configured Pages base.');
+const jsResource = resources.find((path) => /^script\.js(?:\?|$)/.test(path.slice(base.length)));
+const cssResource = resources.find((path) => /^styles\.css(?:\?|$)/.test(path.slice(base.length)));
+assert.ok(jsResource, 'The HTML must reference root-level script.js under the configured Pages base.');
+assert.ok(cssResource, 'The HTML must reference root-level styles.css under the configured Pages base.');
 
 for (const resource of resources) {
   const relativePath = decodeURIComponent(resource.slice(base.length).split(/[?#]/, 1)[0]);
@@ -58,34 +66,38 @@ for (const filename of [
   'joshua-parker.jpg',
   'writing-quill-book.png',
 ]) {
-  const mediaPath = resolve(outputDir, filename);
+  const mediaPath = resolve(outputDir, 'assets', filename);
   const mediaInfo = await stat(mediaPath);
   assert.ok(mediaInfo.isFile() && mediaInfo.size > 0, `Published portfolio image is missing or empty: ${filename}`);
 }
 
-const cssResource = assetResources.find((resource) => resource.endsWith('.css'));
-assert.ok(cssResource, 'A published CSS bundle is required.');
-const cssRelativePath = decodeURIComponent(cssResource.slice(base.length).split(/[?#]/, 1)[0]);
-const css = await readFile(resolve(outputDir, cssRelativePath), 'utf8');
+const css = await readFile(resolve(outputDir, 'styles.css'), 'utf8');
 assert.match(css, /decor-lacrosse/, 'The published stylesheet must include the lacrosse decoration.');
 assert.match(css, /decor-swords/, 'The published stylesheet must include the HEMA sword decoration.');
+assert.match(css, /global-cursor-shadow/, 'The published stylesheet must include the cursor effect.');
+assert.match(css, /@keyframes atmosphere-drift/, 'The published stylesheet must include the moving smoky background.');
 assert.match(css, /@keyframes sport-float/, 'The published stylesheet must include the sports decoration animation.');
 assert.match(css, /@keyframes smoke-drift/, 'The published stylesheet must include the smoke animation.');
 
-const jsResource = assetResources.find((resource) => resource.endsWith('.js'));
-assert.ok(jsResource, 'A published JavaScript bundle is required.');
-const jsRelativePath = decodeURIComponent(jsResource.slice(base.length).split(/[?#]/, 1)[0]);
-const js = await readFile(resolve(outputDir, jsRelativePath), 'utf8');
+const js = await readFile(resolve(outputDir, 'script.js'), 'utf8');
 assert.ok(
   js.includes('https://github.com/2JuicyToast'),
   'The published portfolio must link to the owner’s GitHub profile.',
 );
+assert.ok(
+  js.includes('jdparker2027@gmail.com'),
+  'The published contact card must include the requested email address.',
+);
+assert.match(js, /global-cursor-shadow/, 'The production bundle must include the cursor effect.');
+for (const filename of ['writing-quill-book.png', 'lacrosse-stick-doodle.png', 'hema-sword-doodle.png']) {
+  assert.ok(js.includes(filename), `The production bundle must reference the ${filename} decoration.`);
+}
 
-const iconPath = resolve(outputDir, 'parker-monogram.png');
+const iconPath = resolve(outputDir, 'assets', 'parker-monogram.png');
 const icon = await readFile(iconPath);
 assert.deepEqual([...icon.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], 'The portfolio icon must be a valid PNG.');
 assert.ok(icon.length < 250_000, 'The portfolio icon should stay optimized for browser loading.');
-assert.ok(html.includes(`${base}parker-monogram.png`), 'The HTML must reference the portfolio icon under the configured Pages base.');
+assert.ok(html.includes(`${base}assets/parker-monogram.png`), 'The HTML must reference the portfolio icon under assets/.');
 
 console.log(`GitHub Pages artifact verified at base path "${base}".`);
-console.log(`Checked ${assetResources.length} bundled assets, portfolio images and animations, content JSON, the PNG icon, .nojekyll, and the direct-route fallback.`);
+console.log('Checked the flat file structure, portfolio images and animations, content JSON, the PNG icon, .nojekyll, and the direct-route fallback.');

@@ -118,7 +118,7 @@ export function SiteShell({ children }: PropsWithChildren) {
           <Link href="/" data-testid="footer-link-home">Return Home</Link>
         </nav>
       </footer>
-      {isDeveloper && <CursorShadow />}
+      <CursorShadow />
       {isDeveloper && editorOpen && <ContentEditor onClose={() => setEditorOpen(false)} />}
     </div>
   );

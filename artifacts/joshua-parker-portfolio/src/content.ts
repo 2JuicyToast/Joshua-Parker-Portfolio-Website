@@ -249,11 +249,11 @@ export const portfolio = {
   contact: {
     eyebrow: 'Let’s connect',
     title: 'Contact Me',
-    body: 'Reach me by phone or connect through my professional profiles.',
+    body: 'Reach me by email or phone, or connect through my professional profiles.',
     role: 'Computer Engineering Student · Innovator · Writer',
-    emailLabel: 'Email · address placeholder',
+    emailLabel: 'Email',
     phoneLabel: 'Phone · +1 (347) 902-7157',
-    email: '',
+    email: 'jdparker2027@gmail.com',
     phone: '+13479027157',
   },
 };

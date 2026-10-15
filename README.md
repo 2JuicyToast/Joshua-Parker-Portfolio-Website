@@ -30,13 +30,15 @@ pnpm --filter @workspace/joshua-parker-portfolio run dev
 
 ## Viewer mode (GitHub Pages)
 
-The GitHub Actions workflow builds and publishes the static Viewer after each push or merge to `main`. It also supports manual runs from the Actions tab. The published build supports the repository's `/Joshua-Parker-Portfolio-Website/` path and direct page reloads.
+The GitHub Actions workflow builds the static Viewer after each push or merge to `main`, then publishes only the website files to the `gh-pages` branch. The branch contains `index.html`, `styles.css`, `script.js`, the `assets/` folder, and a `404.html` fallback so direct page reloads continue to work. It does not copy the repository README or source code.
 
-Set repository **Settings → Pages → Build and deployment → Source** to **GitHub Actions** before publishing. The expected project-site URL is:
+After the first `gh-pages` branch deployment, set repository **Settings → Pages → Build and deployment → Source** to **Deploy from a branch**, then select **gh-pages** and **/(root)**. The expected project-site URL is:
 
 <https://2JuicyToast.github.io/Joshua-Parker-Portfolio-Website/>
 
-Source-controlled changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes. Editor-published changes commit `public/portfolio-content.json` directly to `main`, which triggers the same workflow.
+Source-controlled changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes. Editor-published changes commit `public/portfolio-content.json` directly to `main`, which triggers the same workflow. The workflow checks the live home page and all portfolio routes after publishing.
+
+The repository page at `github.com/2JuicyToast/Joshua-Parker-Portfolio-Website` will still show the `main` branch README. The Viewer is served from the GitHub Pages URL above.
 
 To build the Viewer site locally:
 

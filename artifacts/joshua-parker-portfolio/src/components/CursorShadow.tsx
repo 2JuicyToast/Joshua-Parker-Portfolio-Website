@@ -5,7 +5,12 @@ export function CursorShadow() {
   const shadowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+    if (
+      window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
     const shadow = shadowRef.current;
     if (!shadow) return;
 
