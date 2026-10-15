@@ -45,11 +45,13 @@ a { color: inherit; }
 ::selection { background: hsl(338 48% 26% / .17); }
 .page-shell { overflow: hidden; position: relative; isolation: isolate; }
 .page-shell::after {
-  content: ''; position: fixed; z-index: -1; inset: -9%; pointer-events: none; opacity: .56;
+  content: ''; position: absolute; z-index: -1; inset: -6% -4%; pointer-events: none; opacity: .56;
   background:
-    radial-gradient(ellipse at 17% 24%, rgba(105, 110, 113, .16), transparent 28%),
-    radial-gradient(ellipse at 79% 43%, rgba(112, 116, 119, .13), transparent 25%),
-    radial-gradient(ellipse at 44% 82%, rgba(112, 116, 119, .10), transparent 30%);
+    radial-gradient(ellipse at 16% 8%, rgba(105, 110, 113, .16), transparent 28%),
+    radial-gradient(ellipse at 82% 25%, rgba(112, 116, 119, .13), transparent 25%),
+    radial-gradient(ellipse at 37% 49%, rgba(112, 116, 119, .10), transparent 30%),
+    radial-gradient(ellipse at 84% 75%, rgba(105, 110, 113, .12), transparent 27%),
+    radial-gradient(ellipse at 18% 94%, rgba(112, 116, 119, .10), transparent 30%);
   filter: blur(42px); animation: atmosphere-drift 28s ease-in-out infinite alternate;
 }
 .page-shell::before {
@@ -82,6 +84,7 @@ a { color: inherit; }
 }
 .motion-track.motion-pointed::after { opacity: 1; }
 .motion-track.motion-pointed.skill-card,
+.motion-track.motion-pointed.writing-section,
 .motion-track.motion-pointed.page-entry,
 .page-item-grid li.motion-track.motion-pointed,
 .motion-track.motion-pointed.business-card {
@@ -89,7 +92,8 @@ a { color: inherit; }
     translate3d(var(--pointer-shift-x, 0px), var(--pointer-shift-y, 0px), 0)
     rotateX(var(--pointer-tilt-x, 0deg)) rotateY(var(--pointer-tilt-y, 0deg));
 }
-.motion-track.motion-pointed.skill-card:hover {
+.motion-track.motion-pointed.skill-card:hover,
+.motion-track.motion-pointed.writing-section:hover {
   transform: perspective(900px)
     translate3d(var(--pointer-shift-x, 0px), calc(var(--pointer-shift-y, 0px) - 4px), 0)
     rotateX(var(--pointer-tilt-x, 0deg)) rotateY(var(--pointer-tilt-y, 0deg));
@@ -242,14 +246,10 @@ a { color: inherit; }
 .abstract-smoke-three { width: 155px; height: 125px; right: -2%; top: 52%; animation-delay: -13s !important; }
 .motion-decor-interests .decor-lacrosse { width: 150px; height: 150px; right: 17%; top: 14%; opacity: .34; animation: sport-float 12s ease-in-out infinite alternate; }
 .motion-decor-interests .decor-swords { width: 132px; height: 132px; right: 5%; top: 37%; opacity: .27; animation: sport-float 15s ease-in-out infinite alternate-reverse; }
-.motion-decor-writing .decor-quill-book { width: clamp(180px, 24vw, 270px); height: auto; right: 7%; top: 5%; opacity: .42; animation: paper-float 14s ease-in-out infinite alternate; }
+.motion-decor-writing .decor-quill-book { width: clamp(180px, 24vw, 270px); height: auto; right: 7%; top: 5%; opacity: .42; animation: sport-float 12s ease-in-out infinite alternate; }
 @keyframes sport-float {
   from { transform: translate3d(-5px, 5px, 0) rotate(-3deg); }
   to { transform: translate3d(7px, -6px, 0) rotate(3deg); }
-}
-@keyframes paper-float {
-  from { transform: translate3d(-4px, 5px, 0) rotate(-2deg); }
-  to { transform: translate3d(5px, -5px, 0) rotate(2deg); }
 }
 .section-page-title { max-width: 880px; margin: 0 0 14px; font-size: clamp(46px, 7vw, 72px); line-height: 1; letter-spacing: -.055em; font-weight: 600; }
 .section-page-intro { max-width: 600px; margin: 0; color: hsl(var(--muted-foreground)); font-size: 15px; line-height: 1.7; }

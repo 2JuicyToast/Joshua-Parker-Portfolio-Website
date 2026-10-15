@@ -16,9 +16,9 @@ export function SiteShell({ children }: PropsWithChildren) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const targets = Array.from(document.querySelectorAll<HTMLElement>(
-      '.portrait-card, .skill-card, .principle-band, .skills-section, .section-page-hero, .page-content-section, .page-entry, .page-empty, .page-item-grid li, .business-card, .site-quote',
+      '.portrait-card, .skill-card, .writing-section, .principle-band, .skills-section, .section-page-hero, .page-content-section, .page-entry, .page-empty, .page-item-grid li, .business-card, .site-quote',
     ));
-    const cardTargets = '.portrait-card, .skill-card, .page-entry, .page-empty, .page-item-grid li, .business-card';
+    const cardTargets = '.portrait-card, .skill-card, .writing-section, .page-entry, .page-empty, .page-item-grid li, .business-card';
     const pointerHandlers = new Map<HTMLElement, { move: (event: PointerEvent) => void; leave: () => void }>();
 
     if (!reduceMotion && 'IntersectionObserver' in window) {
