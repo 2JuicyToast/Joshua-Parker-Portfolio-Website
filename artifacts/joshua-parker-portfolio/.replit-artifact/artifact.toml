@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Joshua Parker Portfolio"
+description = "A responsive personal portfolio for Joshua Parker to showcase projects, writing, ventures, awards, and interests, inspired by the supplied website reference."
+version = "1.0.0"
+id = "artifacts/joshua-parker-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21915
+
+[services.development]
+run = "pnpm --filter @workspace/joshua-parker-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/joshua-parker-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/joshua-parker-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21915"
+BASE_PATH = "/"
