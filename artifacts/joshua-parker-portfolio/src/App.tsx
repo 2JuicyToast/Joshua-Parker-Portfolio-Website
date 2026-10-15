@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Route, Router, Switch, useLocation, Link } from 'wouter';
-import { portfolio } from './content';
 import { HomePage } from './pages/HomePage';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { ContactPage } from './pages/ContactPage';
 import { SiteShell } from './components/SiteShell';
+import { PortfolioContentProvider, usePortfolioContent } from './state/PortfolioContentProvider';
 
 function NotFoundPage() {
   return (
@@ -18,6 +18,7 @@ function NotFoundPage() {
 
 function AppRoutes() {
   const [location] = useLocation();
+  const { content: { portfolio } } = usePortfolioContent();
 
   useEffect(() => {
     const pageTitle = Object.values(portfolio.pages).find((page) => page.href === location)?.title;
@@ -29,7 +30,7 @@ function AppRoutes() {
           ? `${pageTitle} — ${portfolio.identity.name}`
           : `Page not found — ${portfolio.identity.name}`;
     document.title = title;
-  }, [location]);
+  }, [location, portfolio]);
 
   return (
     <SiteShell>
@@ -49,9 +50,11 @@ function AppRoutes() {
 
 function App() {
   return (
-    <Router base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-      <AppRoutes />
-    </Router>
+    <PortfolioContentProvider>
+      <Router base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+        <AppRoutes />
+      </Router>
+    </PortfolioContentProvider>
   );
 }
 

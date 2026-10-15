@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { portfolio, type PortfolioPageKey } from '../content';
+import type { PortfolioPageKey } from '../content';
 import { MotionDecor } from '../components/MotionDecor';
 import { WritingLibrary } from '../components/WritingLibrary';
+import { usePortfolioContent } from '../state/PortfolioContentProvider';
 
 export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
+  const { content: { portfolio } } = usePortfolioContent();
   const page = portfolio.pages[pageKey];
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const decorTheme = pageKey === 'interests' ? 'interests' : pageKey === 'writing' ? 'writing' : 'abstract';

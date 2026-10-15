@@ -1,12 +1,13 @@
 import { Link } from 'wouter';
-import { portfolio } from '../content';
 import { publicAsset } from '../lib/public-asset';
+import { usePortfolioContent } from '../state/PortfolioContentProvider';
 
 function ArrowMark({ diagonal = false }: { diagonal?: boolean }) {
   return <span aria-hidden="true" className="arrow-mark">{diagonal ? '↗' : '→'}</span>;
 }
 
 export function HomePage() {
+  const { content: { portfolio } } = usePortfolioContent();
   const { identity, principle, skills } = portfolio;
 
   return (

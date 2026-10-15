@@ -1,11 +1,15 @@
 import { useEffect, useState, type PropsWithChildren } from 'react';
 import { Link, useLocation } from 'wouter';
-import { portfolio } from '../content';
 import { publicAsset } from '../lib/public-asset';
+import { ContentEditor } from './ContentEditor';
+import { CursorShadow } from './CursorShadow';
+import { usePortfolioContent } from '../state/PortfolioContentProvider';
 
 export function SiteShell({ children }: PropsWithChildren) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [editorOpen, setEditorOpen] = useState(false);
   const [location] = useLocation();
+  const { content: { portfolio }, isDeveloper } = usePortfolioContent();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -15,12 +19,9 @@ export function SiteShell({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const targets = Array.from(document.querySelectorAll<HTMLElement>(
       '.portrait-card, .skill-card, .writing-section, .principle-band, .skills-section, .section-page-hero, .page-content-section, .page-entry, .page-empty, .page-item-grid li, .business-card, .site-quote',
     ));
-    const cardTargets = '.portrait-card, .skill-card, .writing-section, .page-entry, .page-empty, .page-item-grid li, .business-card';
-    const pointerHandlers = new Map<HTMLElement, { move: (event: PointerEvent) => void; leave: () => void }>();
 
     if (!reduceMotion && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
@@ -37,54 +38,9 @@ export function SiteShell({ children }: PropsWithChildren) {
         observer.observe(target);
       });
 
-      if (canHover) {
-        targets.forEach((target) => {
-          const updatePointer = (event: PointerEvent) => {
-            const bounds = target.getBoundingClientRect();
-            const normalizedX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
-            const normalizedY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
-            const isCard = target.matches(cardTargets);
-            const travel = isCard ? 2 : 0.8;
-            const tilt = isCard ? 1.15 : 0;
-            target.style.setProperty('--spot-x', `${(normalizedX + 1) * 50}%`);
-            target.style.setProperty('--spot-y', `${(normalizedY + 1) * 50}%`);
-            target.style.setProperty('--pointer-shift-x', `${normalizedX * travel}px`);
-            target.style.setProperty('--pointer-shift-y', `${normalizedY * travel}px`);
-            target.style.setProperty('--pointer-tilt-x', `${-normalizedY * tilt}deg`);
-            target.style.setProperty('--pointer-tilt-y', `${normalizedX * tilt}deg`);
-            target.classList.add('motion-pointed');
-          };
-          const clearPointer = () => {
-            target.classList.remove('motion-pointed');
-            target.style.removeProperty('--spot-x');
-            target.style.removeProperty('--spot-y');
-            target.style.removeProperty('--pointer-shift-x');
-            target.style.removeProperty('--pointer-shift-y');
-            target.style.removeProperty('--pointer-tilt-x');
-            target.style.removeProperty('--pointer-tilt-y');
-          };
-          target.addEventListener('pointermove', updatePointer, { passive: true });
-          target.addEventListener('pointerleave', clearPointer, { passive: true });
-          pointerHandlers.set(target, { move: updatePointer, leave: clearPointer });
-        });
-      }
-
       return () => {
         observer.disconnect();
-        targets.forEach((target) => {
-          target.classList.remove('motion-track', 'motion-visible', 'motion-pointed');
-          target.style.removeProperty('--spot-x');
-          target.style.removeProperty('--spot-y');
-          target.style.removeProperty('--pointer-shift-x');
-          target.style.removeProperty('--pointer-shift-y');
-          target.style.removeProperty('--pointer-tilt-x');
-          target.style.removeProperty('--pointer-tilt-y');
-          const handlers = pointerHandlers.get(target);
-          if (handlers) {
-            target.removeEventListener('pointermove', handlers.move);
-            target.removeEventListener('pointerleave', handlers.leave);
-          }
-        });
+        targets.forEach((target) => target.classList.remove('motion-track', 'motion-visible'));
       };
     }
 
@@ -130,7 +86,16 @@ export function SiteShell({ children }: PropsWithChildren) {
             className={`site-mode-indicator ${import.meta.env.DEV ? 'is-developer' : 'is-viewer'}`}
             aria-label={import.meta.env.DEV ? 'Developer mode' : 'Viewer mode'}
           >
-            {import.meta.env.DEV ? 'Developer mode' : 'Viewer mode'}
+            {isDeveloper ? (
+              <button
+                className="edit-content-toggle"
+                type="button"
+                aria-expanded={editorOpen}
+                onClick={() => setEditorOpen((open) => !open)}
+              >
+                Developer mode · Edit
+              </button>
+            ) : 'Viewer mode'}
           </span>
         </nav>
       </header>
@@ -153,6 +118,8 @@ export function SiteShell({ children }: PropsWithChildren) {
           <Link href="/" data-testid="footer-link-home">Return Home</Link>
         </nav>
       </footer>
+      {isDeveloper && <CursorShadow />}
+      {isDeveloper && editorOpen && <ContentEditor onClose={() => setEditorOpen(false)} />}
     </div>
   );
 }

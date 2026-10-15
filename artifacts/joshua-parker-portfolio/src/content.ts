@@ -250,6 +250,7 @@ export const portfolio = {
     eyebrow: 'Let’s connect',
     title: 'Contact Me',
     body: 'Reach me by phone or connect through my professional profiles.',
+    role: 'Computer Engineering Student · Innovator · Writer',
     emailLabel: 'Email · address placeholder',
     phoneLabel: 'Phone · +1 (347) 902-7157',
     email: '',

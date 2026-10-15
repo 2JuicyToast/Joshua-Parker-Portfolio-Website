@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { writingSections, type WritingDocument } from '../content';
+import type { WritingDocument } from '../content';
 import { publicAsset } from '../lib/public-asset';
+import { usePortfolioContent } from '../state/PortfolioContentProvider';
 
 export function WritingLibrary() {
+  const { content: { writingSections } } = usePortfolioContent();
   const [selectedDocument, setSelectedDocument] = useState<WritingDocument | null>(null);
 
   useEffect(() => {
@@ -38,25 +40,36 @@ export function WritingLibrary() {
 
             {section.documents.length > 0 ? (
               <div className="writing-document-list">
-                {section.documents.map((document) => (
-                  <button
-                    className="writing-document-button"
-                    key={document.filename}
-                    type="button"
-                    onClick={() => setSelectedDocument(document)}
-                    aria-haspopup="dialog"
-                    data-testid={`button-open-writing-${section.id}`}
-                  >
-                    <span className="writing-document-copy">
-                      <span className="serif writing-document-title">{document.title}</span>
-                      {document.description && (
-                        <span className="writing-document-description">{document.description}</span>
-                      )}
-                    </span>
-                    <span className="writing-document-action">
-                      Read PDF <span aria-hidden="true">↗</span>
-                    </span>
-                  </button>
+                {section.documents.map((document, documentIndex) => (
+                  document.filename.trim() ? (
+                    <button
+                      className="writing-document-button"
+                      key={`${section.id}-${documentIndex}`}
+                      type="button"
+                      onClick={() => setSelectedDocument(document)}
+                      aria-haspopup="dialog"
+                      data-testid={`button-open-writing-${section.id}`}
+                    >
+                      <span className="writing-document-copy">
+                        <span className="serif writing-document-title">{document.title}</span>
+                        {document.description && (
+                          <span className="writing-document-description">{document.description}</span>
+                        )}
+                      </span>
+                      <span className="writing-document-action">
+                        Read PDF <span aria-hidden="true">↗</span>
+                      </span>
+                    </button>
+                  ) : (
+                    <article className="writing-document-button writing-document-card" key={`${section.id}-${documentIndex}`}>
+                      <span className="writing-document-copy">
+                        <span className="serif writing-document-title">{document.title}</span>
+                        {document.description && (
+                          <span className="writing-document-description">{document.description}</span>
+                        )}
+                      </span>
+                    </article>
+                  )
                 ))}
               </div>
             ) : (

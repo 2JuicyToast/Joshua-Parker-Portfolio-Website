@@ -1,9 +1,26 @@
 import { Link } from 'wouter';
-import { portfolio } from '../content';
 import { MotionDecor } from '../components/MotionDecor';
+import { usePortfolioContent } from '../state/PortfolioContentProvider';
+
+function splitContactDetail(text: string, fallbackLabel: string) {
+  const match = text.trim().match(/^(.+?)\s*[·:]\s*(.*)$/);
+  if (match) {
+    return { label: `${match[1].replace(/:$/, '').trim()}:`, value: match[2].trim() };
+  }
+
+  const trimmed = text.trim();
+  if (trimmed.toLowerCase().replace(/:$/, '') === fallbackLabel.toLowerCase()) {
+    return { label: `${trimmed.replace(/:$/, '')}:`, value: '' };
+  }
+
+  return { label: `${fallbackLabel}:`, value: trimmed };
+}
 
 export function ContactPage() {
+  const { content: { portfolio } } = usePortfolioContent();
   const { contact } = portfolio;
+  const emailDetail = splitContactDetail(contact.emailLabel, 'Email');
+  const phoneDetail = splitContactDetail(contact.phoneLabel, 'Phone');
 
   return (
     <>
@@ -22,16 +39,36 @@ export function ContactPage() {
           <div className="business-card-main">
             <p className="eyebrow">Get in touch</p>
             <h2 className="serif">{portfolio.identity.name}<span className="period">.</span></h2>
-            <p className="business-card-role">Computer Engineering Student<br />Innovator · Writer</p>
+            <p className="business-card-role">{contact.role}</p>
           </div>
           <div className="business-card-bottom">
             <div className="business-card-details">
               {contact.email
-                ? <a href={`mailto:${contact.email}`}>{contact.emailLabel}</a>
-                : <span>{contact.emailLabel}</span>}
+                ? (
+                  <a href={`mailto:${contact.email}`}>
+                    <span className="contact-detail-label">{emailDetail.label}</span>{' '}
+                    <span className="contact-detail-value">{contact.email}</span>
+                  </a>
+                )
+                : (
+                  <span>
+                    <span className="contact-detail-label">{emailDetail.label}</span>
+                    {emailDetail.value && <> <span className="contact-detail-placeholder">{emailDetail.value}</span></>}
+                  </span>
+                )}
               {contact.phone
-                ? <a href={`tel:${contact.phone}`}>{contact.phoneLabel}</a>
-                : <span>{contact.phoneLabel}</span>}
+                ? (
+                  <a href={`tel:${contact.phone}`}>
+                    <span className="contact-detail-label">{phoneDetail.label}</span>{' '}
+                    <span className="contact-detail-value">{phoneDetail.value || contact.phone}</span>
+                  </a>
+                )
+                : (
+                  <span>
+                    <span className="contact-detail-label">{phoneDetail.label}</span>
+                    {phoneDetail.value && <> <span className="contact-detail-placeholder">{phoneDetail.value}</span></>}
+                  </span>
+                )}
             </div>
             <div className="business-card-socials" aria-label="Social profiles">
               {portfolio.social.map((item) => (
