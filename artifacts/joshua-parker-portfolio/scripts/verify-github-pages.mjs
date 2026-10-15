@@ -52,6 +52,26 @@ for (const resource of resources) {
   assert.ok(assetInfo.isFile() && assetInfo.size > 0, `Published asset is missing or empty: ${resource}`);
 }
 
+for (const filename of [
+  'lacrosse-stick-doodle.png',
+  'hema-sword-doodle.png',
+  'joshua-parker.jpg',
+  'writing-quill-book.png',
+]) {
+  const mediaPath = resolve(outputDir, filename);
+  const mediaInfo = await stat(mediaPath);
+  assert.ok(mediaInfo.isFile() && mediaInfo.size > 0, `Published portfolio image is missing or empty: ${filename}`);
+}
+
+const cssResource = assetResources.find((resource) => resource.endsWith('.css'));
+assert.ok(cssResource, 'A published CSS bundle is required.');
+const cssRelativePath = decodeURIComponent(cssResource.slice(base.length).split(/[?#]/, 1)[0]);
+const css = await readFile(resolve(outputDir, cssRelativePath), 'utf8');
+assert.match(css, /decor-lacrosse/, 'The published stylesheet must include the lacrosse decoration.');
+assert.match(css, /decor-swords/, 'The published stylesheet must include the HEMA sword decoration.');
+assert.match(css, /@keyframes sport-float/, 'The published stylesheet must include the sports decoration animation.');
+assert.match(css, /@keyframes smoke-drift/, 'The published stylesheet must include the smoke animation.');
+
 const iconPath = resolve(outputDir, 'parker-monogram.png');
 const icon = await readFile(iconPath);
 assert.deepEqual([...icon.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], 'The portfolio icon must be a valid PNG.');
@@ -59,4 +79,4 @@ assert.ok(icon.length < 250_000, 'The portfolio icon should stay optimized for b
 assert.ok(html.includes(`${base}parker-monogram.png`), 'The HTML must reference the portfolio icon under the configured Pages base.');
 
 console.log(`GitHub Pages artifact verified at base path "${base}".`);
-console.log(`Checked ${assetResources.length} bundled assets, portfolio content JSON, the PNG icon, .nojekyll, and the direct-route fallback.`);
+console.log(`Checked ${assetResources.length} bundled assets, portfolio images and animations, content JSON, the PNG icon, .nojekyll, and the direct-route fallback.`);

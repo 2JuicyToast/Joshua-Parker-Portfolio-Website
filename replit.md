@@ -4,6 +4,7 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 
 ## Run & Operate
 
+- **Quick preview for agents:** start the managed workflow `artifacts/joshua-parker-portfolio: web`. This opens the portfolio at `/` with its images and animations; the API server, GitHub OAuth, and dependency installation are not needed just to preview it.
 - Install dependencies with `pnpm install --frozen-lockfile` from the repository root.
 - Start the managed workflow `artifacts/joshua-parker-portfolio: web` to open the portfolio at `/`. It supplies `PORT` and `BASE_PATH`; Vite also has safe defaults for local builds.
 - For a manual start, run `pnpm --filter @workspace/joshua-parker-portfolio run dev`.
