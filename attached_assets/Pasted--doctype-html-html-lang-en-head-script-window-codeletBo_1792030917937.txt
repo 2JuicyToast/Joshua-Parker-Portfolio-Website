@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20261015-00-cc32e58","C":{"Abril Fatface":"YACgEZbkUVE,0","Albert Sans":"YAHO2HRfeh4,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo Black":"YACgEZulLoA,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Baloo 2":"YAHO2IcQUcM,0","Barlow Condensed":"YAFdJljEuFc,0","Barlow":"YAFdJsyuOPM,1","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Cairo":"YAFdtXpDzlQ,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Cinzel":"YACgEeV8bIQ,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Figtree":"YAHO2b-mV7A,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Fredoka":"YACgEZml080,0","Georgia":"YAGzXkO0pEM,0","Hanken Grotesk":"YAHO2VB9G0I,0","Helvetica":"YAFcf7zkXN0,0","IBM Plex Mono":"YAFdJkmvhGI,0","IBM Plex Sans":"YAFdJgT0SHI,0","Impact":"YAFcfnjI7Vk,0","Instrument Sans":"YAHO2bKyaSQ,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Italiana":"YAHO2Toik_w,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Karla":"YAHO2V2NSXM,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Libre Caslon Display":"YAHO2XhLmt0,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Noto Sans JP":"YAFdJiHXlcI,0","Noto Sans KR":"YAGsojZj-RQ,0","Nunito Sans":"YAFdtQJYB9w,1","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Open Sans":"YAFdJt8dAY0,1","Oswald":"YACgEQY10lw,0","Outfit":"YAHO2nVlg14,0","Pacifico":"YADLjORQ1u4,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAHO2gdhi18,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Public Sans":"YAFdJj8NdaU,1","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","STIX Two Text":"YAHO2joycuk,0","Sarabun":"YAFdJssSnME,0","Schibsted Grotesk":"YAHO2sWydRk,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Space Grotesk":"YAHO2sjPCSM,0","Space Mono":"YADW1-vpsoc,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0"}}');</script><script src="/_sdk/05db820ba1544614.telemetry_sdk.js" integrity="sha512-a7JzkQDDcioSXpM61nxTfeRW7PcxWQy5+BrhyeTFmQFsXJ+Gncm0y50u7fTA7qOPegFnRgqCfa0mGUOK1yjDWQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joshua Parker — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--wine:#651f32;--deep:#401522;--cream:#faf7f2;--ink:#252126;--gold:#80531f;--line:#ded2cc}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;width:100%;font-family:"DM Sans",sans-serif;color:var(--ink)}
+    h1,h2,h3{font-family:Fraunces,serif;line-height:1.16}
+    h1{font-size:clamp(2.5rem,5vw,4.7rem);overflow-wrap:anywhere}
+    h2{font-size:clamp(2rem,4vw,3.4rem)}
+    h3{font-size:1.4rem}
+    p{line-height:1.7}
+    .site-shell{width:100%;min-height:calc(100 * min(var(--vh, 1vh), 1vh))}
+    .inner{width:min(calc(100% - 3rem),1200px);margin-inline:auto}
+    .site-header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+    .header-row{display:flex;align-items:center;justify-content:center;min-height:78px}
+    .desktop-nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.15rem}
+    .nav-link{border:0;background:transparent;color:#35292e;padding:.72rem .7rem;border-radius:7px;font:700 .84rem "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+    .nav-link:hover,.nav-link.active{color:var(--deep);background:#eadbd9}
+    .menu-toggle{display:none;align-items:center;gap:.7rem;border:1px solid #b88f98;background:#fff;border-radius:9px;padding:.7rem .85rem;color:var(--deep);font-weight:700;cursor:pointer}
+    .menu-panel{position:absolute;top:100%;right:max(1rem,calc((100% - 1200px)/2));width:min(360px,calc(100% - 2rem));padding:.65rem;background:var(--cream);border:1px solid var(--line);border-radius:0 0 14px 14px;box-shadow:0 18px 35px #40152226}
+    .menu-panel[hidden]{display:none}
+    .menu-panel .nav-link{display:block;width:100%;text-align:left;padding:.8rem 1rem;font-size:.94rem}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .view{display:none;position:relative;isolation:isolate;overflow:hidden;animation:appear .32s ease both}
+    .view.active{display:block}
+    .view>.inner{position:relative;z-index:1}
+    /* Architectural decoration remains behind readable content. */
+    .view:before{content:"";position:absolute;z-index:0;right:-105px;top:95px;width:350px;height:350px;border:1px solid #aeb0b251;border-radius:50%;box-shadow:0 0 0 42px #bcc0c217,0 0 0 86px #bcc0c210;pointer-events:none;animation:drift 18s ease-in-out infinite alternate}
+    .view:after{content:"";position:absolute;z-index:0;left:-65px;bottom:12%;width:240px;height:155px;pointer-events:none;background:linear-gradient(90deg,transparent 28%,#b4b6b8 28%,#b4b6b8 29%,transparent 29%),linear-gradient(0deg,transparent 48%,#b4b6b8 48%,#b4b6b8 49%,transparent 49%);background-size:48px 48px;mask-image:linear-gradient(90deg,black,transparent);animation:float 23s ease-in-out infinite alternate}
+    @keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes drift{to{transform:translate(-18px,16px)}}
+    @keyframes float{to{transform:translate(12px,-12px)}}
+    .section-pad{padding-block:clamp(3.5rem,7vw,7rem)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:700;color:var(--wine)}
+    .section-heading{margin-bottom:2.4rem}
+    .section-heading h2{color:var(--deep)}
+    .section-heading p:last-child{max-width:690px;color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:clamp(2rem,5vw,5rem);padding-block:clamp(4rem,8vw,8rem)}
+    .hero h1{color:var(--deep);margin:.5rem 0}
+    .hero-role{font-size:clamp(1.22rem,2.1vw,1.65rem);font-weight:700;color:var(--wine);line-height:1.4;max-width:750px}
+    .intro{max-width:730px;color:var(--ink);font-size:1.08rem}
+    .button-row,.social-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+    .social-row{margin-top:1.6rem}
+    .action{border:1px solid var(--wine);border-radius:9px;padding:.85rem 1.2rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .action:hover,.social-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px #40152224}
+    .primary{background:var(--wine);color:#fff}
+    .outline{background:transparent;color:var(--wine)}
+    .photo-placeholder,.media-placeholder{position:relative;overflow:hidden;border:1px solid #bc9da4;border-radius:22px;background:linear-gradient(145deg,#e9d8d5,#f5ece4 65%,#dec8c2);display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--deep);font-weight:700}
+    .photo-placeholder:before,.media-placeholder:before{content:"";position:absolute;inset:12%;border:1px solid #651f3240;border-radius:180px 180px 14px 14px;pointer-events:none}
+    .photo-placeholder:after,.media-placeholder:after{content:"";position:absolute;width:70%;height:70%;border:1px solid #651f3224;border-radius:50%;transform:translate(55%,55%);pointer-events:none}
+    .photo-placeholder span,.media-placeholder span{position:relative;z-index:1;background:#faf7f2ed;padding:.8rem 1rem;border-radius:8px}
+    .hero-photo{min-height:440px}
+    .quote-card{background:var(--deep);color:#fff6f0;border-radius:20px;padding:clamp(2rem,5vw,4rem);position:relative;overflow:hidden}
+    .quote-card:after{content:"";position:absolute;right:-60px;top:-80px;width:290px;height:290px;border:1px solid #ffffff35;border-radius:50%;pointer-events:none}
+    .quote-card p{max-width:900px;font-family:Fraunces,serif;font-size:clamp(1.15rem,2vw,1.65rem);line-height:1.65;position:relative;z-index:1}
+    .social-button{border:1px solid #bb9fa2;background:#fffaf7;color:var(--wine);padding:.65rem .9rem;border-radius:8px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .notice{min-height:1.8rem;color:var(--wine);font-weight:700;margin-top:1rem}
+    .skills-section{padding-bottom:clamp(3rem,6vw,5rem)}
+    .skills-section h2{color:var(--deep);margin:0 0 1.4rem}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .skills-group{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.35rem;box-shadow:0 8px 28px #452a2210}
+    .skills-group h3{margin:0 0 1rem;color:var(--deep);font-size:1.2rem}
+    .skills-group ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+    .skill{display:inline-block;border:1px solid #cbb6b2;border-radius:100px;padding:.38rem .67rem;background:#fffaf8;color:var(--deep);font-weight:600;font-size:.84rem;line-height:1.3}
+    .grid-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+    .card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:1.5rem;box-shadow:0 8px 28px #452a2210}
+    .card p{color:var(--ink)}
+    .card h3{color:var(--deep);margin:.25rem 0 .6rem}
+    .project-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-bottom:2rem;box-shadow:0 12px 32px #452a2210}
+    .project-media{min-height:300px;border:0;border-radius:0}
+    .project-body{padding:clamp(1.5rem,4vw,3rem)}
+    .project-body>p{max-width:790px;color:var(--ink)}
+    .project-body h3{color:var(--deep)}
+    .info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+    .info{border-top:1px solid #cdbfba;padding-top:1rem}
+    .info strong{display:block;color:var(--wine);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
+    .info p{margin:.45rem 0;color:var(--ink);line-height:1.55}
+    .venture-section{margin-top:2.6rem}
+    .venture-section:first-of-type{margin-top:0}
+    .venture-section>h3{font-size:1.8rem;color:var(--deep);margin:0 0 1.15rem}
+    .venture-lead{padding:clamp(2rem,5vw,4rem);border-radius:22px;background:var(--deep);color:#fff}
+    .venture-lead h3{color:#fff;margin:.4rem 0}
+    .venture-lead p{max-width:770px;color:#fff4ed}
+    .award-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+    .award-item{display:flex;align-items:center;gap:1rem;background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.15rem;font-weight:700;color:var(--deep)}
+    .award-item:before{content:"✦";color:var(--gold);font-size:1.2rem}
+    .interest-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4vw,3rem)}
+    .interest-group h3{margin:0 0 1.2rem;padding-bottom:.8rem;border-bottom:1px solid #bdb1ad;color:var(--deep);font-size:1.8rem}
+    .interest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    .interest-card{min-height:145px;display:flex;flex-direction:column;justify-content:space-between}
+    .interest-card .symbol{font-family:Fraunces,serif;font-size:1.5rem;color:var(--gold);font-weight:700}
+    .interest-card h3{font-size:1.22rem;overflow-wrap:anywhere}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:750px}
+    .contact-button{width:100%;min-height:90px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:1.3rem;color:var(--deep);font-weight:700;cursor:pointer}
+    .contact-button:hover{border-color:var(--wine)}
+    .tesla-wrap{padding:1rem 0 3rem;position:relative;z-index:1}
+    .tesla-card{max-width:920px;margin:auto;padding:clamp(2rem,4vw,3.2rem);border:1px solid #d7c6c1;border-radius:20px;background:#fff;box-shadow:0 16px 44px #40152218}
+    .tesla-card blockquote{margin:0;color:var(--deep);font-family:Fraunces,serif;font-size:clamp(1.45rem,2.45vw,2rem);line-height:1.55}
+    .tesla-card figcaption{margin-top:1.3rem;color:#80531f;font-size:1.08rem;font-weight:700;letter-spacing:.03em}
+    footer{border-top:1px solid var(--line);background:#f2eae4;padding:2.5rem 0}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+    footer p{margin:.25rem 0;color:var(--ink)}
+    .footer-links{display:flex;gap:.8rem;flex-wrap:wrap}
+    .footer-links button{border:0;background:none;color:var(--wine);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+    .dialog-backdrop{position:fixed;inset:0;z-index:60;background:#25161bd9;display:none;align-items:center;justify-content:center;padding:1rem}
+    .dialog-backdrop.open{display:flex}
+    .dialog{width:min(100%,700px);background:var(--cream);border-radius:20px;padding:1.5rem;box-shadow:0 20px 70px #0005}
+    .dialog-top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .dialog-top h2{font-size:1.65rem;margin:0;color:var(--deep)}
+    .icon-button{border:1px solid var(--line);background:#fff;color:var(--wine);border-radius:8px;min-width:44px;min-height:44px;font-size:1.3rem;cursor:pointer}
+    .slide-surface{height:300px;margin:1rem 0;background:linear-gradient(135deg,#eadad6,#f9f4ed);border:1px dashed #a77c84;border-radius:13px;display:grid;place-items:center;text-align:center;color:var(--deep);font-weight:700;padding:1rem}
+    .dialog-controls{display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--deep);font-weight:700}
+    .dialog-controls button{border:1px solid var(--wine);color:var(--wine);background:transparent;padding:.7rem 1rem;border-radius:8px;font-weight:700;cursor:pointer}
+    @media(max-width:1100px){.desktop-nav{display:none}.menu-toggle{display:flex}.header-row{justify-content:flex-end}}
+    @media(max-width:750px){.inner{width:min(calc(100% - 2rem),1200px)}.hero,.interest-groups{grid-template-columns:1fr}.hero-photo{min-height:310px;order:-1}.skills-grid{grid-template-columns:1fr 1fr}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.grid-two,.award-list,.contact-grid,.info-grid,.skills-grid{grid-template-columns:1fr}.hero-photo{min-height:260px}.section-pad{padding-block:3rem}.slide-surface{height:220px}.interest-card{min-height:125px;padding:1.1rem}.dialog-controls{gap:.4rem}.dialog-controls button{padding:.6rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/570d53629f0b998d.data_sdk.js" type="text/javascript" integrity="sha512-JEN39+V+Nvv9ZZOVS8vNk1iA9ErZJHTdgOw9KzPuMiK7m0I+KPEr/wmTnCFIQVsDjCZgJWfGnFi1IQh2Io2qyA=="></script>
+  <script src="/_sdk/0b63fb8940df03d4.editing_sdk.js" type="text/javascript" integrity="sha512-fFkkekAA7XKU9UcNO+7a7lGi1SDVYUdIo1lpZS9YpfVovu1WAj3C/MEr/w8zt6Jwq6OKflaYkwf4eOUpMYGz9A=="></script>
+  <script src="/_sdk/f195026a424c1f85.resizing_sdk.js" type="text/javascript" integrity="sha512-8On4Z+AXh1abEzZJ9Dbn9wOvFg+k1LsAaAzKGQ7LlfgXajZ9xEmZaZ1QVzv0AWhCZtCsEpWSOG9DgLri06TS7A=="></script>
+ </head>
+ <body data-template-id="__page-root" class="site-shell w-full" style="background: rgb(250, 247, 242);">
+  <header data-template-id="site-header" class="canva-header site-header" style="background: rgb(250, 247, 242);">
+   <div class="inner header-row">
+    <nav class="desktop-nav" aria-label="Main navigation"><button type="button" class="nav-link canva-button" data-route="home" data-template-id="nav-home" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Home</button> <button type="button" class="nav-link canva-button" data-route="projects" data-template-id="nav-projects" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Projects</button> <button type="button" class="nav-link canva-button" data-route="ventures" data-template-id="nav-ventures" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Current Ventures</button> <button type="button" class="nav-link canva-button" data-route="writing" data-template-id="nav-writing" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Writing</button> <button type="button" class="nav-link canva-button" data-route="awards" data-template-id="nav-awards" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Awards &amp; Recognition</button> <button type="button" class="nav-link canva-button" data-route="activities" data-template-id="nav-activities" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Activities &amp; Interests</button>
+    </nav><button id="menu-toggle" data-template-id="menu-toggle-label" class="menu-toggle canva-button" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Open navigation menu" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">☰ Menu</button>
+   </div>
+   <nav id="menu-panel" class="menu-panel" aria-label="Small-screen navigation" hidden=""><button type="button" class="nav-link canva-button" data-route="home" data-template-id="mobile-nav-home" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Home</button> <button type="button" class="nav-link canva-button" data-route="projects" data-template-id="mobile-nav-projects" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Projects</button> <button type="button" class="nav-link canva-button" data-route="ventures" data-template-id="mobile-nav-ventures" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Current Ventures</button> <button type="button" class="nav-link canva-button" data-route="writing" data-template-id="mobile-nav-writing" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Writing</button> <button type="button" class="nav-link canva-button" data-route="awards" data-template-id="mobile-nav-awards" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Awards &amp; Recognition</button> <button type="button" class="nav-link canva-button" data-route="activities" data-template-id="mobile-nav-activities" style="color: rgb(53, 41, 46); font-weight: 400; font-style: normal; font-size: 16px;">Activities &amp; Interests</button>
+   </nav>
+  </header>
+  <main id="main-content">
+   <section id="home" class="view active" aria-labelledby="home-title">
+    <div class="inner hero">
+     <div>
+      <p data-template-id="home-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">Dover, Delaware · Class of 2027</p>
+      <h1 id="home-title" data-template-id="home-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 700; font-style: normal; font-size: 32px;">Joshua Parker</h1>
+      <p data-template-id="home-role" class="canva-text hero-role" style="color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 24px;">Dual Enrollment Computer Engineering Student | Builder | Writer | Ethical Innovator.</p>
+      <p data-template-id="home-intro" class="canva-text intro" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">I’m a Class of 2027 dual-enrollment computer engineering student from Dover, Delaware. I build technology, share my ideas through writing, and explore how innovation can be useful, responsible, and people-focused.</p>
+      <div class="button-row"><button type="button" data-route="projects" data-template-id="home-projects-button" class="canva-button action primary" style="background: rgb(101, 31, 50); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">View Projects</button> <button type="button" data-route="writing" data-template-id="home-writing-button" class="canva-button action outline" style="background: transparent; color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">Read My Writing</button> <button type="button" id="hero-contact" data-template-id="home-contact-button" class="canva-button action outline" style="background: transparent; color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">Contact Me</button>
+      </div>
+      <div class="social-row" aria-label="Social links"><button type="button" class="social-button unconnected canva-button" data-template-id="home-github" style="background: rgb(255, 250, 247); color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">↗ GitHub</button> <button type="button" class="social-button unconnected canva-button" data-template-id="home-linkedin" style="background: rgb(255, 250, 247); color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">↗ LinkedIn</button> <button type="button" class="social-button unconnected canva-button" data-template-id="home-instagram" style="background: rgb(255, 250, 247); color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">↗ Professional Instagram</button>
+      </div>
+      <p id="home-notice" class="notice" role="status" aria-live="polite"></p>
+     </div>
+     <div data-template-id="home-photo" class="canva-panel photo-placeholder hero-photo" role="img" aria-label="Professional photo placeholder" style="background: linear-gradient(145deg, rgb(233, 216, 213), rgb(245, 236, 228));"><span data-template-id="home-photo-label" class="canva-text" style="background: rgb(250, 247, 242); color: rgb(64, 21, 34); font-weight: 700; font-style: normal; font-size: 16px;">Professional photo placeholder</span>
+     </div>
+    </div>
+    <div class="inner" style="padding-bottom:3rem">
+     <aside data-template-id="quote-card" class="canva-card quote-card" aria-label="Ethical innovation statement" style="background: rgb(64, 21, 34);">
+      <p data-template-id="home-quote" class="canva-text" style="color: rgb(255, 246, 240); font-weight: 400; font-style: normal; font-size: 16px;">“Ethical innovation means taking the time to consider whether an innovation provides a meaningful benefit to society as a whole. Today, it is common to create for the sake of profit, but far less common to create for the sake of people. Many products claim to benefit people, yet use that claim as justification to raise prices and position themselves as the ‘better option.’ As I grow professionally, I will advocate for ethical innovation through my actions, creations, and writing.”</p>
+     </aside>
+    </div>
+    <section class="inner skills-section" aria-labelledby="skills-heading">
+     <p data-template-id="skills-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 700; font-style: normal; font-size: 16px;">What I bring to the work</p>
+     <h2 id="skills-heading" data-template-id="skills-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Skills</h2>
+     <div class="skills-grid">
+      <section class="skills-group" aria-labelledby="skills-programming">
+       <h3 id="skills-programming" data-template-id="skills-programming-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Programming &amp; Web</h3>
+       <ul>
+        <li><span data-template-id="skill-python" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Python</span></li>
+        <li><span data-template-id="skill-java" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Java / Java SE</span></li>
+        <li><span data-template-id="skill-html" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">HTML</span></li>
+        <li><span data-template-id="skill-css" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">CSS</span></li>
+        <li><span data-template-id="skill-oop" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Object-oriented programming</span></li>
+        <li><span data-template-id="skill-git" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Git/GitHub</span></li>
+        <li><span data-template-id="skill-version" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Version control</span></li>
+       </ul>
+      </section>
+      <section class="skills-group" aria-labelledby="skills-engineering">
+       <h3 id="skills-engineering" data-template-id="skills-engineering-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Engineering &amp; Systems</h3>
+       <ul>
+        <li><span data-template-id="skill-pc" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">PC building and hardware</span></li>
+        <li><span data-template-id="skill-troubleshooting" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Hardware troubleshooting</span></li>
+        <li><span data-template-id="skill-digital" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Digital systems</span></li>
+        <li><span data-template-id="skill-prototype" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Prototype development</span></li>
+        <li><span data-template-id="skill-systems" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Systems analysis and workflow design</span></li>
+       </ul>
+      </section>
+      <section class="skills-group" aria-labelledby="skills-professional">
+       <h3 id="skills-professional" data-template-id="skills-professional-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Professional Strengths</h3>
+       <ul>
+        <li><span data-template-id="skill-writing" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Technical writing</span></li>
+        <li><span data-template-id="skill-media" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Presentation/media technology</span></li>
+        <li><span data-template-id="skill-solving" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Problem-solving</span></li>
+        <li><span data-template-id="skill-communication" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Communication</span></li>
+        <li><span data-template-id="skill-organization" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Organization</span></li>
+        <li><span data-template-id="skill-initiative" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Initiative</span></li>
+        <li><span data-template-id="skill-teamwork" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Teamwork</span></li>
+        <li><span data-template-id="skill-adaptability" class="canva-tag skill" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Adaptability</span></li>
+       </ul>
+      </section>
+     </div>
+    </section>
+   </section>
+   <section id="projects" class="view section-pad" aria-labelledby="projects-title">
+    <div class="inner">
+     <div class="section-heading">
+      <p data-template-id="projects-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Selected work</p>
+      <h2 id="projects-title" data-template-id="projects-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Projects</h2>
+      <p data-template-id="projects-intro" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Two ideas centered on making technology useful when it matters.</p>
+     </div>
+     <article data-template-id="mycom-card" class="canva-card project-card" style="background: rgb(255, 255, 255);">
+      <div data-template-id="mycom-media" class="canva-panel media-placeholder project-media" role="img" aria-label="MyCom project image or slideshow placeholder" style="background: linear-gradient(145deg, rgb(233, 216, 213), rgb(245, 236, 228));"><span data-template-id="mycom-media-label" class="canva-text" style="background: rgb(250, 247, 242); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Project image or slideshow placeholder · MyCom</span>
+      </div>
+      <div class="project-body">
+       <p data-template-id="mycom-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">01 / Community technology</p>
+       <h3 data-template-id="mycom-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">MyCom</h3>
+       <p data-template-id="mycom-overview" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">A community-resource platform designed to help people discover local services, opportunities, groups, and events based on their location and situation.</p>
+       <div class="info-grid">
+        <div class="info">
+         <strong data-template-id="mycom-problem-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Problem</strong>
+         <p data-template-id="mycom-problem" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add the specific problem being addressed]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="mycom-does-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">What It Does</strong>
+         <p data-template-id="mycom-does" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Helps people discover relevant local resources.</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="mycom-role-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">My Role</strong>
+         <p data-template-id="mycom-role" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add your role and contributions]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="mycom-tools-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Tools &amp; Skills</strong>
+         <p data-template-id="mycom-tools" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add tools and skills used]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="mycom-status-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Status</strong>
+         <p data-template-id="mycom-status" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Active product in development</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="mycom-learned-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">What I Learned</strong>
+         <p data-template-id="mycom-learned" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add a key takeaway]</p>
+        </div>
+       </div><button type="button" class="action primary slideshow-trigger canva-button" data-project="MyCom" data-template-id="mycom-slideshow-button" style="background: rgb(101, 31, 50); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">View Slideshow</button>
+      </div>
+     </article>
+     <article data-template-id="safelink-card" class="canva-card project-card" style="background: rgb(255, 255, 255);">
+      <div data-template-id="safelink-media" class="canva-panel media-placeholder project-media" role="img" aria-label="SafeLink Beacon project image or slideshow placeholder" style="background: linear-gradient(145deg, rgb(233, 216, 213), rgb(245, 236, 228));"><span data-template-id="safelink-media-label" class="canva-text" style="background: rgb(250, 247, 242); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Project image or slideshow placeholder · SafeLink Beacon</span>
+      </div>
+      <div class="project-body">
+       <p data-template-id="safelink-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">02 / Safety technology</p>
+       <h3 data-template-id="safelink-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">SafeLink Beacon</h3>
+       <p data-template-id="safelink-overview" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">A handheld emergency-safety device concept designed to contact trusted contacts and preserve evidence when a phone may not be accessible or reliable.</p>
+       <div class="info-grid">
+        <div class="info">
+         <strong data-template-id="safelink-problem-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Problem</strong>
+         <p data-template-id="safelink-problem" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add the specific problem being addressed]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="safelink-does-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">What It Does</strong>
+         <p data-template-id="safelink-does" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Concept for contacting trusted contacts and preserving evidence.</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="safelink-role-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">My Role</strong>
+         <p data-template-id="safelink-role" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add your role and contributions]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="safelink-tools-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Tools &amp; Skills</strong>
+         <p data-template-id="safelink-tools" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add tools and skills used]</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="safelink-status-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Status</strong>
+         <p data-template-id="safelink-status" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Prototype-stage product</p>
+        </div>
+        <div class="info">
+         <strong data-template-id="safelink-learned-label" class="canva-text" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">What I Learned</strong>
+         <p data-template-id="safelink-learned" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Add a key takeaway]</p>
+        </div>
+       </div><button type="button" class="action primary slideshow-trigger canva-button" data-project="SafeLink Beacon" data-template-id="safelink-slideshow-button" style="background: rgb(101, 31, 50); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">View Slideshow</button>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section id="ventures" class="view section-pad" aria-labelledby="ventures-title">
+    <div class="inner">
+     <div class="section-heading">
+      <p data-template-id="ventures-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">What I’m building toward</p>
+      <h2 id="ventures-title" data-template-id="ventures-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Current Ventures</h2>
+     </div>
+     <section class="venture-section" aria-labelledby="products-heading">
+      <h3 id="products-heading" data-template-id="products-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Projects &amp; Products</h3>
+      <div class="grid-two">
+       <article class="card">
+        <p data-template-id="venture-mycom-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Product</p>
+        <h3 data-template-id="venture-mycom" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">MyCom</h3>
+        <p data-template-id="venture-mycom-description" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">A community-resource platform designed to help people discover local services, opportunities, groups, and events based on their location and situation.</p>
+        <p data-template-id="venture-mycom-status" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Active product in development.</p>
+       </article>
+       <article class="card">
+        <p data-template-id="venture-safelink-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Product</p>
+        <h3 data-template-id="venture-safelink" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">SafeLink Beacon</h3>
+        <p data-template-id="venture-safelink-description" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">A handheld emergency-safety device concept designed to contact trusted contacts and preserve evidence when a phone may not be accessible or reliable.</p>
+        <p data-template-id="venture-safelink-status" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Prototype-stage product.</p>
+       </article>
+      </div>
+     </section>
+     <section class="venture-section" aria-labelledby="future-heading">
+      <h3 id="future-heading" data-template-id="future-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Future Concepts</h3>
+      <article data-template-id="future-card" class="canva-card card" style="border-style: dashed; background: rgb(255, 255, 255);">
+       <p data-template-id="future-description" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">[Space for future ideas and products]</p>
+      </article>
+     </section>
+     <section class="venture-section" aria-labelledby="current-ventures-heading">
+      <h3 id="current-ventures-heading" data-template-id="current-ventures-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Current Ventures</h3>
+      <article data-template-id="pen-panel" class="canva-panel venture-lead" style="background: rgb(64, 21, 34);">
+       <h3 data-template-id="pen-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 19px;">P.E.N. Innovation</h3>
+       <p data-template-id="pen-full-name" class="canva-text" style="font-weight: 700; color: rgb(255, 244, 237); font-style: normal; font-size: 16px;">Purposefully Ethical Network of Innovation</p>
+       <p data-template-id="pen-description" class="canva-text" style="color: rgb(255, 244, 237); font-weight: 400; font-style: normal; font-size: 16px;">A current venture focused on ethical, people-focused innovation.</p>
+      </article>
+     </section>
+    </div>
+   </section>
+   <section id="writing" class="view section-pad" aria-labelledby="writing-title">
+    <div class="inner">
+     <div class="section-heading">
+      <p data-template-id="writing-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Words &amp; ideas</p>
+      <h2 id="writing-title" data-template-id="writing-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Writing</h2>
+     </div>
+     <article class="card" style="max-width:720px;padding:clamp(2rem,5vw,4rem)">
+      <h3 data-template-id="writing-development-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Writing page to be developed</h3>
+      <p data-template-id="writing-development-note" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">This section is still in progress.</p>
+     </article>
+    </div>
+   </section>
+   <section id="awards" class="view section-pad" aria-labelledby="awards-title">
+    <div class="inner">
+     <div class="section-heading">
+      <h2 id="awards-title" data-template-id="awards-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Awards &amp; Recognition</h2>
+     </div>
+     <div class="award-list">
+      <div data-template-id="award-smash" class="canva-card award-item" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">SMASH National Competition Winner</div>
+      <div data-template-id="award-nhs" class="canva-card award-item" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">National Honor Society</div>
+      <div data-template-id="award-homecoming" class="canva-card award-item" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Homecoming Court</div>
+      <div data-template-id="award-top-ten" class="canva-card award-item" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Top 10 Academic Ranking</div>
+     </div>
+    </div>
+   </section>
+   <section id="activities" class="view section-pad" aria-labelledby="activities-title">
+    <div class="inner">
+     <div class="section-heading">
+      <h2 id="activities-title" data-template-id="activities-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Activities &amp; Interests</h2>
+     </div>
+     <div class="interest-groups">
+      <section class="interest-group" aria-labelledby="recreational-heading">
+       <h3 id="recreational-heading" data-template-id="recreational-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Recreational</h3>
+       <div class="interest-grid">
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">01 /</span>
+         <h3 data-template-id="interest-lacrosse" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Lacrosse</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">02 /</span>
+         <h3 data-template-id="interest-kickboxing" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Kickboxing</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">03 /</span>
+         <h3 data-template-id="interest-hema" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">HEMA</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">04 /</span>
+         <h3 data-template-id="interest-gaming" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Gaming</h3>
+        </article>
+       </div>
+      </section>
+      <section class="interest-group" aria-labelledby="technical-heading">
+       <h3 id="technical-heading" data-template-id="technical-heading" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Technical</h3>
+       <div class="interest-grid">
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">05 /</span>
+         <h3 data-template-id="interest-technology" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Technology Building</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">06 /</span>
+         <h3 data-template-id="interest-robotics" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Robotics</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">07 /</span>
+         <h3 data-template-id="interest-programming" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Programming</h3>
+        </article>
+        <article class="card interest-card">
+         <span class="symbol" aria-hidden="true">08 /</span>
+         <h3 data-template-id="interest-writing" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 19px;">Writing / Creative Writing</h3>
+        </article>
+       </div>
+      </section>
+     </div>
+    </div>
+   </section>
+   <section id="contact" class="view section-pad" aria-labelledby="contact-title">
+    <div class="inner">
+     <div class="section-heading">
+      <p data-template-id="contact-kicker" class="canva-text eyebrow" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Let’s connect</p>
+      <h2 id="contact-title" data-template-id="contact-title" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 24px;">Contact Me</h2>
+      <p data-template-id="contact-intro" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Contact details can be connected here when they’re ready.</p>
+     </div>
+     <div class="contact-grid"><button type="button" data-template-id="contact-email" class="canva-button contact-button unconnected" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Email · address placeholder</button> <button type="button" data-template-id="contact-phone" class="canva-button contact-button unconnected" style="background: rgb(255, 255, 255); color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 16px;">Phone · number placeholder</button>
+     </div>
+     <p id="contact-notice" class="notice" role="status" aria-live="polite"></p><button type="button" data-route="home" data-template-id="contact-back" class="canva-button action outline" style="margin-top: 1rem; background: transparent; color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">← Back to Home</button>
+    </div>
+   </section>
+  </main>
+  <aside class="tesla-wrap inner" aria-label="Nikola Tesla quotation">
+   <figure data-template-id="tesla-card" class="canva-card tesla-card" style="background: rgb(255, 255, 255);">
+    <blockquote data-template-id="footer-quote" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 400; font-style: normal; font-size: 29px;">“The scientific man does not aim at an immediate result. His duty is to lay the foundation for those who are to come, and point the way.”</blockquote>
+    <figcaption data-template-id="footer-attribution" class="canva-text" style="color: rgb(128, 83, 31); font-weight: 700; font-style: normal; font-size: 18px;">— Nikola Tesla</figcaption>
+   </figure>
+  </aside>
+  <footer data-template-id="site-footer" class="canva-footer" style="background: rgb(242, 234, 228);">
+   <div class="inner footer-bottom">
+    <div><strong data-template-id="footer-name" class="canva-text" style="color: rgb(64, 21, 34); font-weight: 700; font-style: normal; font-size: 16px;">Joshua Parker</strong>
+     <p data-template-id="footer-location" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Dover, Delaware</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation"><button type="button" data-route="projects" data-template-id="footer-projects" class="canva-button" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Projects</button> <button type="button" data-route="writing" data-template-id="footer-writing" class="canva-button" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Writing</button> <button type="button" data-route="awards" data-template-id="footer-awards" class="canva-button" style="color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Awards</button>
+    </nav>
+   </div>
+  </footer>
+  <div id="gallery-backdrop" class="dialog-backdrop">
+   <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="gallery-title" aria-describedby="gallery-description">
+    <div class="dialog-top">
+     <h2 id="gallery-title"></h2><button id="gallery-close" data-template-id="gallery-close" class="icon-button canva-button" type="button" aria-label="Close slideshow" style="background: rgb(255, 255, 255); color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">×</button>
+    </div>
+    <p id="gallery-description" data-template-id="gallery-description" class="canva-text" style="color: rgb(37, 33, 38); font-weight: 400; font-style: normal; font-size: 16px;">Placeholder slides for the selected project.</p>
+    <div id="slide-surface" class="slide-surface" role="img" aria-label="Project slideshow placeholder">
+     <span id="slide-label"></span>
+    </div>
+    <div class="dialog-controls"><button id="slide-prev" data-template-id="slide-prev" class="canva-button" type="button" aria-label="Previous slide" style="background: transparent; color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">← Previous</button> <span id="slide-count" aria-live="polite"></span> <button id="slide-next" data-template-id="slide-next" class="canva-button" type="button" aria-label="Next slide" style="background: transparent; color: rgb(101, 31, 50); font-weight: 400; font-style: normal; font-size: 16px;">Next →</button>
+    </div>
+   </div>
+  </div>
+  <script>
+    (() => {
+      const publicRoutes = ['home','projects','ventures','writing','awards','activities'];
+      const menu = document.getElementById('menu-panel');
+      const menuToggle = document.getElementById('menu-toggle');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function closeMenu(restoreFocus = false) {
+        if (menu.hidden) return;
+        menu.hidden = true;
+        menuToggle.setAttribute('aria-expanded','false');
+        menuToggle.setAttribute('aria-label','Open navigation menu');
+        if (restoreFocus) menuToggle.focus();
+      }
+      function navigate(route, fromHero = false) {
+        const target = route === 'contact' && fromHero ? 'contact' : publicRoutes.includes(route) ? route : 'home';
+        document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === target));
+        document.querySelectorAll('.nav-link').forEach(button => {
+          const active = button.dataset.route === target;
+          button.classList.toggle('active', active);
+          if (active) button.setAttribute('aria-current','page');
+          else button.removeAttribute('aria-current');
+        });
+        closeMenu();
+        if (target === 'contact') {
+          if (location.hash) history.replaceState(null,'',location.pathname + location.search);
+        } else if (location.hash !== '#' + target) {
+          history.replaceState(null,'','#' + target);
+        }
+        window.scrollTo({top:0,behavior:reducedMotion.matches ? 'instant' : 'smooth'});
+      }
+      document.querySelectorAll('[data-route]').forEach(button => button.addEventListener('click', () => navigate(button.dataset.route)));
+      document.getElementById('hero-contact').addEventListener('click', () => navigate('contact',true));
+      menuToggle.addEventListener('click', () => {
+        const opening = menu.hidden;
+        menu.hidden = !opening;
+        menuToggle.setAttribute('aria-expanded',String(opening));
+        menuToggle.setAttribute('aria-label',opening ? 'Close navigation menu' : 'Open navigation menu');
+        if (opening) menu.querySelector('button').focus();
+      });
+      document.addEventListener('click', event => {
+        if (!menu.hidden && !menu.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+      });
+      window.matchMedia('(min-width: 1101px)').addEventListener('change', event => {
+        if (event.matches) closeMenu();
+      });
+      window.addEventListener('hashchange', () => navigate(location.hash.slice(1)));
+      navigate(location.hash.slice(1) || 'home');
+
+      document.querySelectorAll('.unconnected').forEach(button => button.addEventListener('click', () => {
+        button.closest('.view').querySelector('.notice').textContent = 'This contact option has not been connected yet.';
+      }));
+
+      const backdrop = document.getElementById('gallery-backdrop');
+      const title = document.getElementById('gallery-title');
+      const label = document.getElementById('slide-label');
+      const count = document.getElementById('slide-count');
+      const slideNames = ['Overview placeholder','Process placeholder','Outcome placeholder'];
+      let project = '', slide = 0, opener = null;
+      function renderSlide() {
+        label.textContent = project + ' · ' + slideNames[slide];
+        count.textContent = (slide + 1) + ' / ' + slideNames.length;
+      }
+      function closeGallery() {
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        if (opener) opener.focus();
+      }
+      document.querySelectorAll('.slideshow-trigger').forEach(button => button.addEventListener('click', () => {
+        opener = button;
+        project = button.dataset.project;
+        slide = 0;
+        title.textContent = project + ' slideshow';
+        renderSlide();
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('gallery-close').focus();
+      }));
+      document.getElementById('gallery-close').addEventListener('click',closeGallery);
+      document.getElementById('slide-prev').addEventListener('click', () => {
+        slide = (slide + slideNames.length - 1) % slideNames.length;
+        renderSlide();
+      });
+      document.getElementById('slide-next').addEventListener('click', () => {
+        slide = (slide + 1) % slideNames.length;
+        renderSlide();
+      });
+      backdrop.addEventListener('click', event => {
+        if (event.target === backdrop) closeGallery();
+      });
+      document.addEventListener('keydown', event => {
+        if (backdrop.classList.contains('open')) {
+          if (event.key === 'Escape') { closeGallery(); return; }
+          if (event.key === 'ArrowLeft') { slide = (slide + slideNames.length - 1) % slideNames.length; renderSlide(); }
+          if (event.key === 'ArrowRight') { slide = (slide + 1) % slideNames.length; renderSlide(); }
+          if (event.key === 'Tab') {
+            const controls = [...backdrop.querySelectorAll('button')];
+            const first = controls[0], last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+          }
+        } else if (event.key === 'Escape' && !menu.hidden) closeMenu(true);
+      });
+    })();
+  </script>
+ 
+</body></html>

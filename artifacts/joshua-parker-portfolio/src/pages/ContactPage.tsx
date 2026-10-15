@@ -16,17 +16,16 @@ export function ContactPage() {
           <span className="chapter-number mono">06</span>
           <div>
             <p className="eyebrow">Get in touch</p>
-            {contact.email ? (
-              <>
-                <h2 className="serif">{contact.email}</h2>
-                <a className="page-entry-link" href={`mailto:${contact.email}`}>Send an email <span aria-hidden="true">↗</span></a>
-              </>
-            ) : (
-              <>
-                <h2 className="serif">Contact details haven’t been added yet.</h2>
-                <p>{contact.placeholder}</p>
-              </>
-            )}
+            <h2 className="serif">Contact details</h2>
+            <p>{contact.body}</p>
+            <div className="contact-detail-list">
+              {contact.email
+                ? <a href={`mailto:${contact.email}`}>Email · {contact.email}</a>
+                : <span>{contact.emailLabel}</span>}
+              {contact.phone
+                ? <a href={`tel:${contact.phone}`}>Phone · {contact.phone}</a>
+                : <span>{contact.phoneLabel}</span>}
+            </div>
           </div>
         </article>
         <div className="page-return">

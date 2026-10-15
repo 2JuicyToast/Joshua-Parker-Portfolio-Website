@@ -1,12 +1,44 @@
 /**
- * Update portfolio copy and add page entries here. The site layout is shared
- * across the pages; changing this file updates the content without changing it.
+ * Update portfolio copy and add page entries here. Presentation is shared
+ * across routes; editing this file updates the website content.
  */
 export type PortfolioEntry = {
   title: string;
-  description: string;
-  meta?: string;
-  href?: string;
+  description?: string;
+  eyebrow?: string;
+  subtitle?: string;
+  problem?: string;
+  whatItDoes?: string;
+  role?: string;
+  tools?: string[];
+  status?: string;
+  learning?: string;
+};
+
+export type PortfolioPageSection = {
+  title?: string;
+  entries?: PortfolioEntry[];
+  items?: { number: string; label: string }[];
+  note?: string;
+  copy?: string;
+};
+
+const myCom: PortfolioEntry = {
+  title: 'MyCom',
+  eyebrow: '01 / Community technology',
+  description:
+    'A community-resource platform designed to help people discover local services, opportunities, groups, and events based on their location and situation.',
+  whatItDoes: 'Helps people discover relevant local resources.',
+  status: 'Active product in development',
+};
+
+const safeLinkBeacon: PortfolioEntry = {
+  title: 'SafeLink Beacon',
+  eyebrow: '02 / Safety technology',
+  description:
+    'A handheld emergency-safety device concept designed to contact trusted contacts and preserve evidence when a phone may not be accessible or reliable.',
+  whatItDoes: 'Concept for contacting trusted contacts and preserving evidence.',
+  status: 'Prototype-stage product',
 };
 
 export const portfolio = {
@@ -71,58 +103,106 @@ export const portfolio = {
       number: '01',
       eyebrow: 'Selected work',
       title: 'Projects',
-      intro: 'Projects and work samples.',
-      emptyTitle: 'Project details haven’t been added yet.',
-      emptyNote: 'The reference image doesn’t include project entries. Add project names, descriptions, and links here.',
-      entries: [] as PortfolioEntry[],
+      intro: 'Two ideas centered on making technology useful when it matters.',
+      sections: [
+        {
+          entries: [myCom, safeLinkBeacon],
+        },
+      ] as PortfolioPageSection[],
     },
     ventures: {
       href: '/ventures',
       number: '02',
-      eyebrow: 'In progress',
+      eyebrow: 'What I’m building toward',
       title: 'Current Ventures',
-      intro: 'Current work and ventures.',
-      emptyTitle: 'Venture details haven’t been added yet.',
-      emptyNote: 'The reference image doesn’t include venture entries. Add venture names, roles, and details here.',
-      entries: [] as PortfolioEntry[],
+      intro: '',
+      sections: [
+        {
+          title: 'Projects & Products',
+          entries: [myCom, safeLinkBeacon],
+        },
+        {
+          title: 'Future Concepts',
+          note: 'Space for future ideas and products.',
+        },
+        {
+          title: 'Current Ventures',
+          entries: [
+            {
+              title: 'P.E.N. Innovation',
+              subtitle: 'Purposefully Ethical Network of Innovation',
+              description: 'A current venture focused on ethical, people-focused innovation.',
+            },
+          ],
+        },
+      ] as PortfolioPageSection[],
     },
     writing: {
       href: '/writing',
       number: '03',
-      eyebrow: 'Ideas in words',
+      eyebrow: 'Words & ideas',
       title: 'Writing',
-      intro: 'Writing and ideas.',
-      emptyTitle: 'Writing samples haven’t been added yet.',
-      emptyNote: 'The reference image doesn’t include writing titles or links. Add writing samples and links here.',
-      entries: [] as PortfolioEntry[],
+      intro: '',
+      sections: [
+        {
+          title: 'Writing page to be developed',
+          copy: 'This section is still in progress.',
+        },
+      ] as PortfolioPageSection[],
     },
     recognition: {
       href: '/recognition',
       number: '04',
-      eyebrow: 'Milestones',
+      eyebrow: 'Awards & Recognition',
       title: 'Awards & Recognition',
-      intro: 'Awards, recognition, and milestones.',
-      emptyTitle: 'Award details haven’t been added yet.',
-      emptyNote: 'The reference image shows this page in the navigation but doesn’t include award details. Add awards, dates, and organizations here.',
-      entries: [] as PortfolioEntry[],
+      intro: '',
+      sections: [
+        {
+          items: [
+            { number: '01', label: 'SMASH National Competition Winner' },
+            { number: '02', label: 'National Honor Society' },
+            { number: '03', label: 'Homecoming Court' },
+            { number: '04', label: 'Top 10 Academic Ranking' },
+          ],
+        },
+      ] as PortfolioPageSection[],
     },
     interests: {
       href: '/interests',
       number: '05',
-      eyebrow: 'Beyond the screen',
+      eyebrow: 'Activities & Interests',
       title: 'Activities & Interests',
-      intro: 'Activities, interests, and community involvement.',
-      emptyTitle: 'Activity and interest details haven’t been added yet.',
-      emptyNote: 'The reference image shows this page in the navigation but doesn’t include its entries. Add activities, roles, and interests here.',
-      entries: [] as PortfolioEntry[],
+      intro: '',
+      sections: [
+        {
+          title: 'Recreational',
+          items: [
+            { number: '01', label: 'Lacrosse' },
+            { number: '02', label: 'Kickboxing' },
+            { number: '03', label: 'HEMA' },
+            { number: '04', label: 'Gaming' },
+          ],
+        },
+        {
+          title: 'Technical',
+          items: [
+            { number: '05', label: 'Technology Building' },
+            { number: '06', label: 'Robotics' },
+            { number: '07', label: 'Programming' },
+            { number: '08', label: 'Writing / Creative Writing' },
+          ],
+        },
+      ] as PortfolioPageSection[],
     },
   },
   contact: {
     eyebrow: 'Let’s connect',
-    title: 'Have a thoughtful idea in mind?',
-    body: 'I’m interested in building useful things and learning from people who care about how technology affects us.',
-    placeholder: 'Add a contact email in the portfolio content to make this page actionable.',
+    title: 'Contact Me',
+    body: 'Contact details can be connected here when they’re ready.',
+    emailLabel: 'Email · address placeholder',
+    phoneLabel: 'Phone · number placeholder',
     email: '',
+    phone: '',
   },
   footer: 'A personal portfolio, built around curiosity and care.',
 };

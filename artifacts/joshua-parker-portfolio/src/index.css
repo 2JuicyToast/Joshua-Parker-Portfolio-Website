@@ -163,12 +163,35 @@ a { color: inherit; }
 }
 .page-empty h2, .page-entry h2 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; font-weight: 500; }
 .page-empty p:last-child, .page-entry > p:not(.eyebrow) { max-width: 680px; margin: 0; color: hsl(var(--muted-foreground)); font-size: 13px; line-height: 1.7; }
-.page-entry-list { display: grid; gap: 16px; }
-.page-entry { grid-template-columns: 1fr; gap: 8px; }
+.page-sections { display: grid; gap: 42px; }
+.page-content-section { min-width: 0; }
+.page-section-title { margin: 0 0 18px; font-size: clamp(23px, 3vw, 30px); font-weight: 500; }
+.page-entry-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.page-entry { display: flex; flex-direction: column; gap: 13px; min-width: 0; }
+.page-entry-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
 .page-entry .eyebrow { margin-bottom: 2px; }
+.page-entry-heading h3 { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.15; }
+.entry-subtitle { margin: 6px 0 0; color: hsl(var(--muted-foreground)); font-family: var(--app-font-serif); font-size: 14px; }
+.entry-status { flex: 0 0 auto; max-width: 150px; border: 1px solid hsl(24 18% 82%); border-radius: 20px; padding: 6px 9px; color: hsl(var(--primary)); font-size: 9px; line-height: 1.3; text-align: center; }
+.page-entry .entry-description { max-width: 680px; margin: 0; color: hsl(var(--muted-foreground)); font-size: 13px; line-height: 1.7; }
+.project-highlight { border-left: 2px solid hsl(8 40% 60%); padding-left: 13px; }
+.project-highlight .eyebrow { margin-bottom: 5px; font-size: 9px; }
+.project-highlight p:last-child { margin: 0; font-size: 12px; line-height: 1.55; }
+.project-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.project-details dt { margin-bottom: 4px; color: hsl(var(--primary)); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.project-details dd { margin: 0; color: hsl(var(--muted-foreground)); font-size: 12px; line-height: 1.55; }
+.page-item-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.page-item-grid li { display: flex; align-items: center; gap: 16px; min-height: 72px; padding: 16px 19px; background: hsl(var(--card)); border: 1px solid hsl(var(--border) / .8); border-radius: 10px; color: hsl(var(--foreground)); font-family: var(--app-font-serif); font-size: 17px; box-shadow: 0 8px 22px hsl(337 35% 14% / .035); }
+.page-item-number { color: hsl(8 40% 60%); font-size: 10px; }
+.page-note { margin: 0; padding: 20px 22px; background: hsl(8 30% 91% / .42); border: 1px solid hsl(24 18% 82% / .68); border-radius: 9px; color: hsl(var(--muted-foreground)); font-size: 13px; line-height: 1.65; }
+.writing-status { display: block; max-width: 720px; }
+.writing-status .eyebrow { margin-bottom: 10px; }
 .page-entry-link { display: inline-flex; gap: 8px; width: fit-content; margin-top: 8px; color: hsl(var(--primary)); font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .page-return { display: flex; justify-content: flex-end; padding-top: 28px; }
 .contact-empty { min-height: 180px; }
+.contact-detail-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+.contact-detail-list a, .contact-detail-list span { padding: 8px 11px; border: 1px solid hsl(var(--border)); border-radius: 5px; color: hsl(var(--primary)); font-size: 11px; text-decoration: none; }
+.contact-detail-list a:hover { background: hsl(8 33% 83% / .38); }
 @media (max-width: 850px) {
   .site-header { padding-inline: 28px; }
   .navigation { gap: 0; }
@@ -236,6 +259,10 @@ a { color: inherit; }
   .page-empty { grid-template-columns: 32px 1fr; gap: 13px; padding: 23px 18px; }
   .page-empty h2 { font-size: 24px; }
   .page-entry { padding: 23px 19px; }
+  .page-entry-list, .page-item-grid { grid-template-columns: 1fr; }
+  .page-entry-heading { flex-direction: column; }
+  .entry-status { max-width: none; }
+  .project-details { grid-template-columns: 1fr; }
   .page-return { justify-content: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {

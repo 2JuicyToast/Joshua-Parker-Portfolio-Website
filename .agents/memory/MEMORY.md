@@ -1,0 +1,1 @@
+- [Portfolio page structure](portfolio-page-structure.md) — Keep each navigation item on its own page in the reference’s shared visual format; preserve supplied source content.
