@@ -5,7 +5,7 @@ description: The portfolio navigation represents separate pages that share the H
 
 Each top-level portfolio navigation item should open its own page, using the shared header and visual format. Keep the Home page’s original introduction, ethical-innovation statement, and skills on Home; map additional supplied content to its corresponding page instead of appending all sections to one long page.
 
-Keep MyCom and SafeLink Beacon on Projects, with the requested editable placeholder fields and slideshow controls. Keep Current Ventures for actual ventures such as P.E.N. Innovation, not product/project listings. Contact Me is its own page. Put the Nikola Tesla quote in large, faded, unboxed text at the bottom of every page, followed only by the name and location in the footer. Avoid text overlapping or appearing behind the Home portrait placeholder; subtle animated gray shapes are acceptable in the surrounding whitespace.
+Keep MyCom and SafeLink Beacon on Projects, with the requested editable placeholder fields and slideshow controls. Keep Current Ventures for actual ventures such as P.E.N. Innovation, not product/project listings. Contact Me is its own page and can use a business-card presentation with placeholder contact details. Put the Nikola Tesla quote in large, faded, unboxed, centered text at the bottom of every page. Separate the footer with a rule; keep the name and location plus links ordered Current Ventures, Contact Me, Return Home. Subtle animated gray smoke is acceptable across pages if it stays behind readable content and respects reduced-motion settings.
 
 Use source-provided facts and mark genuinely missing information rather than inventing it.
 

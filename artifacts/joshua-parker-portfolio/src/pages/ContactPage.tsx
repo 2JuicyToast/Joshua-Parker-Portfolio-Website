@@ -6,27 +6,47 @@ export function ContactPage() {
 
   return (
     <>
-      <section className="section-page-hero content-width">
+      <section className="section-page-hero content-width contact-hero">
         <p className="eyebrow">{contact.eyebrow}</p>
         <h1 className="serif section-page-title">{contact.title}<span className="period">.</span></h1>
         <p className="section-page-intro">{contact.body}</p>
       </section>
-      <section className="section-page-content content-width">
-        <article className="page-empty contact-empty">
-          <span className="chapter-number mono">06</span>
-          <div>
+      <section className="section-page-content content-width contact-content">
+        <article className="business-card" aria-label={`Contact card for ${portfolio.identity.name}`}>
+          <div className="business-card-edge" aria-hidden="true" />
+          <div className="business-card-top">
+            <span className="business-card-monogram serif">JP</span>
+            <span className="mono business-card-index">DOVER, DE · 2027</span>
+          </div>
+          <div className="business-card-main">
             <p className="eyebrow">Get in touch</p>
-            <h2 className="serif">Contact details</h2>
-            <p>{contact.body}</p>
-            <div className="contact-detail-list">
+            <h2 className="serif">{portfolio.identity.name}<span className="period">.</span></h2>
+            <p className="business-card-role">Computer Engineering Student<br />Builder · Writer · Ethical Innovator</p>
+          </div>
+          <div className="business-card-bottom">
+            <div className="business-card-details">
               {contact.email
-                ? <a href={`mailto:${contact.email}`}>Email · {contact.email}</a>
+                ? <a href={`mailto:${contact.email}`}>{contact.emailLabel}</a>
                 : <span>{contact.emailLabel}</span>}
               {contact.phone
-                ? <a href={`tel:${contact.phone}`}>Phone · {contact.phone}</a>
+                ? <a href={`tel:${contact.phone}`}>{contact.phoneLabel}</a>
                 : <span>{contact.phoneLabel}</span>}
             </div>
+            <div className="business-card-socials" aria-label="Social profiles">
+              {portfolio.social.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid={`contact-social-${item.label.toLowerCase().replaceAll(' ', '-')}`}
+                >
+                  {item.label}<span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
           </div>
+          <span className="business-card-watermark" aria-hidden="true">JP</span>
         </article>
         <div className="page-return">
           <Link className="button button-outline" href="/">Back to Home <span aria-hidden="true">↗</span></Link>

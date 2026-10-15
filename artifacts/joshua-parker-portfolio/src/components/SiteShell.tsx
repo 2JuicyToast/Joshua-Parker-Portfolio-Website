@@ -60,6 +60,11 @@ export function SiteShell({ children }: PropsWithChildren) {
           <strong>{portfolio.identity.name}</strong>
           <span>{portfolio.identity.location}</span>
         </div>
+        <nav className="footer-navigation" aria-label="Footer navigation">
+          <Link href="/ventures" data-testid="footer-link-current-ventures">Current Ventures</Link>
+          <Link href="/contact" data-testid="footer-link-contact">Contact Me</Link>
+          <Link href="/" data-testid="footer-link-home">Return Home</Link>
+        </nav>
       </footer>
     </div>
   );
