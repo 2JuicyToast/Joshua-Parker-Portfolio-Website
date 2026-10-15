@@ -72,6 +72,15 @@ assert.match(css, /decor-swords/, 'The published stylesheet must include the HEM
 assert.match(css, /@keyframes sport-float/, 'The published stylesheet must include the sports decoration animation.');
 assert.match(css, /@keyframes smoke-drift/, 'The published stylesheet must include the smoke animation.');
 
+const jsResource = assetResources.find((resource) => resource.endsWith('.js'));
+assert.ok(jsResource, 'A published JavaScript bundle is required.');
+const jsRelativePath = decodeURIComponent(jsResource.slice(base.length).split(/[?#]/, 1)[0]);
+const js = await readFile(resolve(outputDir, jsRelativePath), 'utf8');
+assert.ok(
+  js.includes('https://github.com/2JuicyToast'),
+  'The published portfolio must link to the owner’s GitHub profile.',
+);
+
 const iconPath = resolve(outputDir, 'parker-monogram.png');
 const icon = await readFile(iconPath);
 assert.deepEqual([...icon.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], 'The portfolio icon must be a valid PNG.');

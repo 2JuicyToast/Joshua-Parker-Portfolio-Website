@@ -110,7 +110,7 @@ export const portfolio = {
     contact: 'Contact Me',
   },
   social: [
-    { label: 'GitHub', url: 'https://github.com/' },
+    { label: 'GitHub', url: 'https://github.com/2JuicyToast' },
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/joshua-parker-b44275395/' },
     { label: 'Professional Instagram', url: 'https://www.instagram.com/jscholars_academia/' },
   ],
