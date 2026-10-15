@@ -14,7 +14,8 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/joshua-parker-portfolio run build:github-pages` — build the GitHub Pages Viewer version, including a nested-route fallback.
 - `pnpm --filter @workspace/joshua-parker-portfolio run verify:github-pages` — verify base-path asset URLs, public content JSON, icon, Jekyll bypass, and route fallback.
-- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; it builds the Viewer and deploys it with GitHub Actions.
+- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; it builds the Viewer and publishes it to `gh-pages`. GitHub Pages then serves that branch. Keep publisher runs serialized (`cancel-in-progress: false`): cancelling a run cannot cancel GitHub's separate in-progress Pages deployment, and the next branch update can be rejected until that deployment finishes.
+- A Node.js 20 deprecation warning for `actions/upload-artifact@v4` comes from GitHub's managed Pages publishing path, not an action version pinned in this repository. It is informational; this repository's own build uses Node.js 24. To control the Pages action versions, migrate the repository's Pages source from **Deploy from a branch** to **GitHub Actions** and use a repository-managed Pages artifact/deployment workflow; that also requires changing the Pages setting in GitHub.
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - GitHub OAuth client ID and secret are required for editor auto-publishing. `SESSION_SECRET` protects the server-side session. No database is used; `DATABASE_URL` is required only if adding features that import the existing database library.

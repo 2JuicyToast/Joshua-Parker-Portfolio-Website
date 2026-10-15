@@ -1,2 +1,3 @@
 - [Portfolio page structure](portfolio-page-structure.md) — Keep each navigation item on its own page in the reference’s shared visual format; preserve supplied source content.
 - [GitHub Pages cache checks](github-pages-cache-checks.md) — When a route looks stale, bypass the CDN cache and compare asset hashes before assuming the build is outdated.
+- [GitHub Pages deployment serialization](github-pages-deployment-serialization.md) — Keep branch publishers serialized; cancelling a source workflow cannot cancel its asynchronous Pages deployment.

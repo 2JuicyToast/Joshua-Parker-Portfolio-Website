@@ -10,7 +10,7 @@ The portfolio runs as a live development preview in Replit and publishes as a st
 
 1. Run `pnpm install --frozen-lockfile` from the repository root.
 2. Start the managed workflows `artifacts/api-server: API Server` and `artifacts/joshua-parker-portfolio: web`.
-3. Click **Developer mode · Edit** in the preview. Sign in with the GitHub account `2JuicyToast`, edit the content, and click **Publish changes**. This commits the public content file to `main`; the Pages workflow builds and deploys the Viewer.
+3. Click **Developer mode · Edit** in the preview. Sign in with the GitHub account `2JuicyToast`, edit the content, and click **Publish changes**. This commits the public content file to `main`; the Pages workflow builds the Viewer and publishes it to `gh-pages`, which GitHub Pages serves.
 4. The editor keeps a browser copy of successfully published changes and still offers **Download Viewer content** as a manual backup. Do not put passwords or private information in the public content file.
 
 ### Configure automatic editor publishing
