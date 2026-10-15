@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { portfolio } from '../content';
+import { MotionDecor } from '../components/MotionDecor';
 
 export function ContactPage() {
   const { contact } = portfolio;
@@ -7,6 +8,7 @@ export function ContactPage() {
   return (
     <>
       <section className="section-page-hero content-width contact-hero">
+        <MotionDecor theme="abstract" />
         <p className="eyebrow">{contact.eyebrow}</p>
         <h1 className="serif section-page-title">{contact.title}<span className="period">.</span></h1>
         <p className="section-page-intro">{contact.body}</p>

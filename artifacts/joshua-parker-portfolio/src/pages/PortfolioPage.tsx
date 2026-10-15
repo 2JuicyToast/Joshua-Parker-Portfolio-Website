@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { portfolio, type PortfolioPageKey } from '../content';
+import { MotionDecor } from '../components/MotionDecor';
 
 export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
   const page = portfolio.pages[pageKey];
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const decorTheme = pageKey === 'interests' ? 'interests' : pageKey === 'writing' ? 'writing' : 'abstract';
 
   return (
     <>
       <section className="section-page-hero content-width">
+        <MotionDecor theme={decorTheme} />
         <p className="eyebrow">{page.eyebrow}<span> · </span> {page.number}</p>
         <h1 className="serif section-page-title">{page.title}<span className="period">.</span></h1>
         {page.intro && <p className="section-page-intro">{page.intro}</p>}
