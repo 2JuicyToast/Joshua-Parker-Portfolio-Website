@@ -1,0 +1,23 @@
+take off the dover de in the contact card. now lets make the following text changes
+
+Starting with projects pages, change the selceted work text to "Current and previous products/Projects". Change the text under project to say "Browse both past projects and those currently in development." change MyCOm to MyCommNet, change the problem to "People don't know about beneficial opportunities or resources in their area" my role is sole developer, tools and skills would be web development, AI assisted UI design & website blueprint, and backend tools. What I learned is how to make profiles and work with backends and keys in web development
+
+Sfaelinkg beacon the problem was the complexity of safety technology and lack of evidence in case of event. My role for this was team manager, Developer and prototype creator tools and skills were PCB creation, electrical engineering knowledge, coding and online CAD tools. WHat I learned was how to connect wiring, create prototypes, and work with CAD tools and ESP32 coding
+
+For awards and recongition give them descriptions: change smash national competiton winner to SMASH national pitch competiton winner Winner
+
+Recognized as first palce national competition winner through the SMASH program, demonstrating innovation, problem-solving, and the ability to develop impactful solutions in a competitive environment.
+
+🎓 National Honor Society
+
+Selected for membership in the National Honor Society in recognition of academic excellence, leadership, character, and commitment to community service.
+
+👑 Homecoming Court
+
+Chosen by peers and the school community for Homecoming Court, reflecting leadership, school involvement, and positive contributions to campus life.
+
+📚 Top 10 Academic Ranking
+
+Remained among the top-performing students in my class, throughout all 4 years of high school maintaining a strong academic record and demonstrating consistent dedication to educational excellence.
+
+change any text to make it more professional or grammaticallt correct as needed
