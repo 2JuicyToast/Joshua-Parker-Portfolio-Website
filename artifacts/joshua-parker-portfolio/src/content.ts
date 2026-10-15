@@ -54,9 +54,9 @@ export const portfolio = {
     name: 'Joshua D. Parker',
     location: 'Dover, Delaware',
     classYear: 'Class of 2027',
-    headline: 'Dual Enrollment Computer Engineering Student | Innovator | Writer.',
+    headline: 'Dual Enrollment Computer Engineering Student | Robotics & Hardware Builder | Writer | Ethical Innovator.',
     introduction:
-      'Class of 2027 dual-enrollment computer engineering student from Dover, Delaware. I build technology, share my ideas through writing, and explore how innovation can be useful, responsible, and people-focused.',
+      'I’m an early college high school student currently doing dual enrollment at Delaware State University.',
   },
   navigation: [
     { id: 'home', label: 'Home', href: '/' },
