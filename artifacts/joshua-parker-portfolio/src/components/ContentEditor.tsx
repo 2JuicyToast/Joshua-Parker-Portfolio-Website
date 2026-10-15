@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { PortfolioEntry, PortfolioPageKey } from '../content';
 import { createPortal } from 'react-dom';
 import {
@@ -16,13 +16,14 @@ type FieldProps = {
 };
 
 function TextField({ label, path, value, multiline = false, type = 'text' }: FieldProps) {
-  const { updateContent } = usePortfolioContent();
+  const { updateContent, isSaving } = usePortfolioContent();
   return (
     <label className="editor-field">
       <span>{label}</span>
       {multiline ? (
         <textarea
           value={value}
+          disabled={isSaving}
           onChange={(event) => updateContent(path, event.target.value)}
           rows={3}
         />
@@ -30,6 +31,7 @@ function TextField({ label, path, value, multiline = false, type = 'text' }: Fie
         <input
           type={type}
           value={value}
+          disabled={isSaving}
           onChange={(event) => updateContent(path, event.target.value)}
         />
       )}
@@ -38,13 +40,14 @@ function TextField({ label, path, value, multiline = false, type = 'text' }: Fie
 }
 
 function ListField({ label, path, value }: FieldProps) {
-  const { updateContent } = usePortfolioContent();
+  const { updateContent, isSaving } = usePortfolioContent();
   const items = value.split('\n');
   return (
     <label className="editor-field">
       <span>{label} <small>One item per line</small></span>
       <textarea
         value={value}
+        disabled={isSaving}
         onChange={(event) => updateContent(
           path,
           event.target.value.split('\n').map((item) => item.trim()).filter(Boolean),
@@ -82,26 +85,95 @@ function AddCardButton({
   collection: EditableCollection;
   children: string;
 }) {
-  const { addCard } = usePortfolioContent();
+  const { addCard, isSaving } = usePortfolioContent();
   return (
-    <button className="editor-add-button" type="button" onClick={() => addCard(collection)}>
+    <button className="editor-add-button" type="button" disabled={isSaving} onClick={() => addCard(collection)}>
       <span aria-hidden="true">+</span> {children}
     </button>
   );
 }
 
+type PublisherStatus = {
+  loading: boolean;
+  configured: boolean;
+  authenticated: boolean;
+  login: string | null;
+  message?: string;
+};
+
 export function ContentEditor({ onClose }: { onClose: () => void }) {
   const {
     content,
     hasUnsavedChanges,
+    isSaving,
     saveMessage,
     saveChanges,
     discardChanges,
   } = usePortfolioContent();
+  const [publisher, setPublisher] = useState<PublisherStatus>({
+    loading: true,
+    configured: false,
+    authenticated: false,
+    login: null,
+  });
   const { portfolio, writingSections } = content;
   const projectSections = portfolio.pages.projects.sections;
   const ventureSections = portfolio.pages.ventures.sections;
   const recognitionSection = portfolio.pages.recognition.sections[0];
+
+  useEffect(() => {
+    let active = true;
+    fetch('/api/portfolio/publisher/status', { cache: 'no-store' })
+      .then(async (response) => {
+        const result = (await response.json()) as {
+          configured?: boolean;
+          authenticated?: boolean;
+          login?: string | null;
+          message?: string;
+        };
+        if (!active) return;
+        setPublisher({
+          loading: false,
+          configured: Boolean(result.configured),
+          authenticated: Boolean(result.authenticated),
+          login: result.login ?? null,
+          message: result.message,
+        });
+      })
+      .catch(() => {
+        if (!active) return;
+        setPublisher({
+          loading: false,
+          configured: false,
+          authenticated: false,
+          login: null,
+          message: 'The publishing service is unavailable. Start the API Server workflow and try again.',
+        });
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const signOutOfGitHub = async () => {
+    try {
+      await fetch('/api/portfolio/publisher/logout', {
+        method: 'POST',
+        credentials: 'same-origin',
+      });
+      setPublisher((current) => ({
+        ...current,
+        authenticated: false,
+        login: null,
+      }));
+    } catch {
+      setPublisher((current) => ({
+        ...current,
+        message: 'Could not sign out of GitHub. Please close this editor and try again.',
+      }));
+    }
+  };
 
   const downloadViewerContent = () => {
     const file = new Blob([`${JSON.stringify(content, null, 2)}\n`], {
@@ -149,11 +221,33 @@ export function ContentEditor({ onClose }: { onClose: () => void }) {
           </button>
         </header>
         <p className="content-editor-note">
-          Save keeps edits in this browser. To publish them, download the Viewer file below, replace
-          {' '}<code>public/portfolio-content.json</code>, then push the project to <code>main</code>.
+          Sign in with the portfolio owner’s GitHub account, then publish edits directly to the live
+          Viewer. Each publish updates the public content file and starts a Pages rebuild.
         </p>
         <div className="content-editor-export">
-          <span>Anyone can view this content after it is published. Don’t put passwords or private information here.</span>
+          <div>
+            {publisher.loading ? (
+              <span role="status">Checking GitHub publishing access…</span>
+            ) : publisher.authenticated ? (
+              <span role="status">
+                Signed in as <strong>{publisher.login}</strong>.
+                {' '}Published content is public; don’t add passwords or private information.
+              </span>
+            ) : publisher.configured ? (
+              <>
+                <span role="status">
+                  {publisher.message || 'Sign in as 2JuicyToast to publish edits.'}
+                </span>
+                <a className="editor-add-button" href="/api/portfolio/publisher/login">
+                  Sign in with GitHub
+                </a>
+              </>
+            ) : (
+              <span role="status">
+                {publisher.message || 'GitHub publishing needs setup before edits can be published.'}
+              </span>
+            )}
+          </div>
           <button className="editor-add-button" type="button" onClick={downloadViewerContent}>
             <span aria-hidden="true">↓</span> Download Viewer content
           </button>
@@ -339,12 +433,23 @@ export function ContentEditor({ onClose }: { onClose: () => void }) {
         </div>
 
         <footer className="content-editor-footer">
-          <p role="status">{hasUnsavedChanges ? 'Unsaved changes' : saveMessage || 'All changes saved.'}</p>
-          <button className="button button-outline" type="button" onClick={discardChanges} disabled={!hasUnsavedChanges}>
+          <p role="status">
+            {isSaving
+              ? 'Publishing…'
+              : hasUnsavedChanges
+                ? 'Unsaved changes'
+                : saveMessage || 'All changes saved.'}
+          </p>
+          {publisher.authenticated && (
+            <button className="button button-outline" type="button" onClick={signOutOfGitHub}>
+              Sign out
+            </button>
+          )}
+          <button className="button button-outline" type="button" onClick={discardChanges} disabled={!hasUnsavedChanges || isSaving}>
             Discard
           </button>
-          <button className="button button-primary" type="button" onClick={saveChanges} disabled={!hasUnsavedChanges}>
-            Save changes
+          <button className="button button-primary" type="button" onClick={saveChanges} disabled={!hasUnsavedChanges || isSaving || !publisher.authenticated}>
+            {isSaving ? 'Publishing…' : 'Publish changes'}
           </button>
         </footer>
       </aside>

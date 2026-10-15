@@ -27,10 +27,11 @@ type PortfolioContentContextValue = {
   content: EditablePortfolioContent;
   isDeveloper: boolean;
   hasUnsavedChanges: boolean;
+  isSaving: boolean;
   saveMessage: string;
   updateContent: (path: PortfolioContentPath, value: unknown) => void;
   addCard: (collection: EditableCollection) => void;
-  saveChanges: () => boolean;
+  saveChanges: () => Promise<boolean>;
   discardChanges: () => void;
 };
 
@@ -116,9 +117,9 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
   const [content, setContent] = useState(initial.content);
   const [savedContent, setSavedContent] = useState(initial.content);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState(initial.message);
   const hasUnsavedChangesRef = useRef(false);
-  const hasLocalSaveRef = useRef(initial.fromStorage);
 
   const updateContent = useCallback((path: PortfolioContentPath, value: unknown) => {
     setContent((current) => {
@@ -175,22 +176,48 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
     setSaveMessage('');
   }, []);
 
-  const saveChanges = useCallback(() => {
-    if (!isDeveloper || typeof window === 'undefined') return false;
+  const saveChanges = useCallback(async () => {
+    if (!isDeveloper || typeof window === 'undefined' || isSaving) return false;
+
+    setIsSaving(true);
+    setSaveMessage('Publishing changes to GitHub…');
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
-      hasLocalSaveRef.current = true;
+      const response = await fetch('/api/portfolio/publisher/publish', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content }),
+      });
+      const result = (await response.json()) as {
+        error?: string;
+        message?: string;
+      };
+      if (!response.ok) {
+        throw new Error(result.error || result.message || 'Could not publish changes.');
+      }
+
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+      } catch (storageError) {
+        console.warn('Could not cache the published portfolio edits in this browser:', storageError);
+      }
       hasUnsavedChangesRef.current = false;
       setSavedContent(clone(content));
       setHasUnsavedChanges(false);
-      setSaveMessage('Saved in this browser.');
+      setSaveMessage(result.message || 'Saved to GitHub. The Viewer is rebuilding now.');
       return true;
     } catch (error) {
-      console.error('Could not save portfolio edits:', error);
-      setSaveMessage('Could not save. Check browser storage and try again.');
+      console.error('Could not publish portfolio edits:', error);
+      setSaveMessage(
+        error instanceof Error
+          ? error.message
+          : 'Could not publish changes. Try again.',
+      );
       return false;
+    } finally {
+      setIsSaving(false);
     }
-  }, [content]);
+  }, [content, isSaving]);
 
   const discardChanges = useCallback(() => {
     hasUnsavedChangesRef.current = false;
@@ -200,7 +227,6 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
   }, [savedContent]);
 
   useEffect(() => {
-    if (initial.fromStorage || hasLocalSaveRef.current) return;
     let active = true;
 
     fetch(publicAsset('portfolio-content.json'), { cache: 'no-store' })
@@ -213,6 +239,17 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
       .then((value) => {
         if (!active || hasUnsavedChangesRef.current || value === null) return;
         const publishedContent = parseEditableContent(value);
+        if (
+          initial.fromStorage &&
+          JSON.stringify(initial.content) !== JSON.stringify(publishedContent)
+        ) {
+          setSavedContent(clone(publishedContent));
+          setContent(clone(initial.content));
+          hasUnsavedChangesRef.current = true;
+          setHasUnsavedChanges(true);
+          setSaveMessage('This browser has saved edits that differ from GitHub. Review or discard them before publishing.');
+          return;
+        }
         setContent(clone(publishedContent));
         setSavedContent(clone(publishedContent));
         if (isDeveloper) setSaveMessage('Loaded content from the project Viewer file.');
@@ -227,7 +264,7 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
     return () => {
       active = false;
     };
-  }, [initial.fromStorage]);
+  }, [initial.content, initial.fromStorage]);
 
   useEffect(() => {
     if (!isDeveloper || !hasUnsavedChanges) return;
@@ -245,6 +282,7 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
         content,
         isDeveloper,
         hasUnsavedChanges,
+        isSaving,
         saveMessage,
         updateContent,
         addCard,

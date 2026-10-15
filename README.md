@@ -5,10 +5,18 @@ The portfolio runs as a live development preview in Replit and publishes as a st
 ## Developer mode (Replit)
 
 1. Run `pnpm install --frozen-lockfile` from the repository root.
-2. Start the managed Replit workflow `artifacts/joshua-parker-portfolio: web`.
-3. Edit portfolio copy in `artifacts/joshua-parker-portfolio/src/content.ts`; the development preview refreshes as files are saved.
-4. Or click **Developer mode · Edit** in the preview to edit content and add cards. **Save changes** stores edits in that browser's local storage.
-5. To publish those edits, click **Download Viewer content** in the editor and replace `artifacts/joshua-parker-portfolio/public/portfolio-content.json` with the downloaded file. Commit and push it to `main`; the Pages workflow will build the Viewer with that content. Do not put passwords or private information in the public content file.
+2. Start the managed workflows `artifacts/api-server: API Server` and `artifacts/joshua-parker-portfolio: web`.
+3. Click **Developer mode · Edit** in the preview. Sign in with the GitHub account `2JuicyToast`, edit the content, and click **Publish changes**. This commits the public content file to `main`; the Pages workflow builds and deploys the Viewer.
+4. The editor keeps a browser copy of successfully published changes and still offers **Download Viewer content** as a manual backup. Do not put passwords or private information in the public content file.
+
+### Configure automatic editor publishing
+
+Create a GitHub OAuth App for the Replit development preview:
+
+- Homepage URL: `https://efe9ae6e-b90a-4f71-9f15-3ee5434187bd-00-rc14bmqerfzp.riker.replit.dev/`
+- Authorization callback URL: `https://efe9ae6e-b90a-4f71-9f15-3ee5434187bd-00-rc14bmqerfzp.riker.replit.dev/api/portfolio/publisher/callback`
+
+Add the OAuth App's **Client ID** as `GITHUB_OAUTH_CLIENT_ID` and its **Client secret** as `GITHUB_OAUTH_CLIENT_SECRET` in Replit Secrets. The server requests the `public_repo` scope and only accepts the GitHub account `2JuicyToast`. The GitHub token stays in a server-side session; it is never sent to browser code.
 
 To start the development server manually:
 
@@ -18,13 +26,13 @@ pnpm --filter @workspace/joshua-parker-portfolio run dev
 
 ## Viewer mode (GitHub Pages)
 
-The GitHub Actions workflow builds and publishes the Viewer site after each push or merge to `main`. It also supports manual runs from the Actions tab. The published static build supports the repository's `/Joshua-Parker-Portfolio-Website/` path and direct page reloads.
+The GitHub Actions workflow builds and publishes the static Viewer after each push or merge to `main`. It also supports manual runs from the Actions tab. The published build supports the repository's `/Joshua-Parker-Portfolio-Website/` path and direct page reloads.
 
-Set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The deployment workflow checks that setting and the built Viewer before publishing; a branch/Jekyll deployment can succeed while publishing the wrong page. The expected project-site URL is:
+Set repository **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The workflow verifies this setting and the built Viewer before publishing; branch/Jekyll deployment can show the README instead. The expected project-site URL is:
 
 <https://2JuicyToast.github.io/Joshua-Parker-Portfolio-Website/>
 
-Source-controlled changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes successfully. Browser-saved edits are exported through `public/portfolio-content.json` before publishing.
+Source-controlled changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes. Editor-published changes commit `public/portfolio-content.json` directly to `main`, which triggers the same workflow.
 
 To build the Viewer site locally:
 
