@@ -62,7 +62,7 @@ a { color: inherit; }
 .wordmark-monogram { display: grid; place-items: center; width: 30px; height: 30px; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); border-radius: 50%; font-family: var(--app-font-serif); font-size: 12px; }
 .navigation { display: flex; align-items: center; gap: 5px; }
 .navigation a { font-size: 11px; text-decoration: none; color: hsl(var(--foreground) / .83); padding: 9px 12px; border-radius: 5px; transition: background .25s, color .25s; }
-.navigation a:hover, .navigation .nav-home { background: hsl(8 33% 83% / .56); color: hsl(var(--primary)); }
+.navigation a:hover, .navigation .nav-active { background: hsl(8 33% 83% / .56); color: hsl(var(--primary)); }
 .menu-toggle { display: none; }
 .hero { min-height: 455px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 65px; padding-block: 58px 60px; position: relative; }
 .hero-copy { position: relative; z-index: 1; }
@@ -149,6 +149,26 @@ a { color: inherit; }
 .footer-links { display: flex; gap: 15px; }
 .footer-links a { font-size: 10px; text-decoration: underline; text-decoration-color: hsl(var(--primary) / .35); text-underline-offset: 3px; }
 .footer-links a:hover { text-decoration-color: hsl(var(--primary)); }
+.section-page-hero {
+  min-height: 350px; display: flex; flex-direction: column; justify-content: end;
+  padding-block: 76px 48px; border-bottom: 1px solid hsl(var(--border));
+}
+.section-page-title { max-width: 880px; margin: 0 0 14px; font-size: clamp(46px, 7vw, 72px); line-height: 1; letter-spacing: -.055em; font-weight: 600; }
+.section-page-intro { max-width: 600px; margin: 0; color: hsl(var(--muted-foreground)); font-size: 15px; line-height: 1.7; }
+.section-page-content { min-height: 410px; padding-block: 48px 100px; }
+.page-empty, .page-entry {
+  display: grid; grid-template-columns: 75px 1fr; gap: 24px; align-items: start;
+  padding: 34px 30px; border: 1px solid hsl(var(--border) / .8); border-radius: 12px;
+  background: hsl(var(--card)); box-shadow: 0 8px 22px hsl(337 35% 14% / .035);
+}
+.page-empty h2, .page-entry h2 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; font-weight: 500; }
+.page-empty p:last-child, .page-entry > p:not(.eyebrow) { max-width: 680px; margin: 0; color: hsl(var(--muted-foreground)); font-size: 13px; line-height: 1.7; }
+.page-entry-list { display: grid; gap: 16px; }
+.page-entry { grid-template-columns: 1fr; gap: 8px; }
+.page-entry .eyebrow { margin-bottom: 2px; }
+.page-entry-link { display: inline-flex; gap: 8px; width: fit-content; margin-top: 8px; color: hsl(var(--primary)); font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.page-return { display: flex; justify-content: flex-end; padding-top: 28px; }
+.contact-empty { min-height: 180px; }
 @media (max-width: 850px) {
   .site-header { padding-inline: 28px; }
   .navigation { gap: 0; }
@@ -160,6 +180,7 @@ a { color: inherit; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
   .skill-card:last-child { grid-column: span 2; }
   .chapter { grid-template-columns: 45px 1fr 1fr; gap: 17px; }
+  .section-page-hero { min-height: 310px; }
 }
 @media (max-width: 640px) {
   html { scroll-padding-top: 69px; }
@@ -208,6 +229,14 @@ a { color: inherit; }
   .site-footer > p { grid-column: 1 / -1; grid-row: 2; }
   .footer-links { gap: 10px; }
   .footer-links a { font-size: 9px; }
+  .section-page-hero { min-height: 280px; padding-block: 56px 34px; }
+  .section-page-title { font-size: clamp(42px, 12vw, 58px); }
+  .section-page-intro { font-size: 13px; }
+  .section-page-content { min-height: 360px; padding-block: 30px 68px; }
+  .page-empty { grid-template-columns: 32px 1fr; gap: 13px; padding: 23px 18px; }
+  .page-empty h2 { font-size: 24px; }
+  .page-entry { padding: 23px 19px; }
+  .page-return { justify-content: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

@@ -1,8 +1,14 @@
 /**
- * Portfolio copy lives here. Update labels, descriptions, skill lists, and
- * contact destinations in this file; presentation is in App.tsx.
- * Unknown destinations stay empty until Joshua supplies the real URL.
+ * Update portfolio copy and add page entries here. The site layout is shared
+ * across the pages; changing this file updates the content without changing it.
  */
+export type PortfolioEntry = {
+  title: string;
+  description: string;
+  meta?: string;
+  href?: string;
+};
+
 export const portfolio = {
   identity: {
     name: 'Joshua Parker',
@@ -15,12 +21,12 @@ export const portfolio = {
     portraitNote: 'A portrait can be added here when one is available.',
   },
   navigation: [
-    { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Current Ventures', href: '#ventures' },
-    { label: 'Writing', href: '#writing' },
-    { label: 'Awards & Recognition', href: '#recognition' },
-    { label: 'Activities & Interests', href: '#interests' },
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'projects', label: 'Projects', href: '/projects' },
+    { id: 'ventures', label: 'Current Ventures', href: '/ventures' },
+    { id: 'writing', label: 'Writing', href: '/writing' },
+    { id: 'recognition', label: 'Awards & Recognition', href: '/recognition' },
+    { id: 'interests', label: 'Activities & Interests', href: '/interests' },
   ],
   actions: {
     projects: 'View Projects',
@@ -59,55 +65,66 @@ export const portfolio = {
     text: '“The scientific man does not aim at an immediate result. His duty is to lay the foundation for those who are to come, and point the way.”',
     attribution: 'Nikola Tesla',
   },
-  sections: {
+  pages: {
     projects: {
+      href: '/projects',
       number: '01',
       eyebrow: 'Selected work',
       title: 'Projects',
-      intro: 'A home for the things I make, test, and learn from.',
-      placeholder: 'Project details will be added here.',
-      note: 'No project descriptions were included in the reference.',
+      intro: 'Projects and work samples.',
+      emptyTitle: 'Project details haven’t been added yet.',
+      emptyNote: 'The reference image doesn’t include project entries. Add project names, descriptions, and links here.',
+      entries: [] as PortfolioEntry[],
     },
     ventures: {
+      href: '/ventures',
       number: '02',
       eyebrow: 'In progress',
       title: 'Current Ventures',
-      intro: 'An evolving record of what I’m exploring now.',
-      placeholder: 'Current venture details will be added here.',
-      note: 'Add a venture when there is one you would like to share.',
+      intro: 'Current work and ventures.',
+      emptyTitle: 'Venture details haven’t been added yet.',
+      emptyNote: 'The reference image doesn’t include venture entries. Add venture names, roles, and details here.',
+      entries: [] as PortfolioEntry[],
     },
     writing: {
+      href: '/writing',
       number: '03',
       eyebrow: 'Ideas in words',
       title: 'Writing',
-      intro: 'Thinking out loud about technology, responsibility, and the people on the other side of every design decision.',
-      placeholder: 'Writing samples will be added here.',
-      note: 'No writing links or titles were included in the reference.',
+      intro: 'Writing and ideas.',
+      emptyTitle: 'Writing samples haven’t been added yet.',
+      emptyNote: 'The reference image doesn’t include writing titles or links. Add writing samples and links here.',
+      entries: [] as PortfolioEntry[],
     },
     recognition: {
+      href: '/recognition',
       number: '04',
       eyebrow: 'Milestones',
       title: 'Awards & Recognition',
-      intro: 'A place to acknowledge the work and people that make progress possible.',
-      placeholder: 'Awards and recognition will be added here.',
-      note: 'No awards or recognition details were included in the reference.',
+      intro: 'Awards, recognition, and milestones.',
+      emptyTitle: 'Award details haven’t been added yet.',
+      emptyNote: 'The reference image shows this page in the navigation but doesn’t include award details. Add awards, dates, and organizations here.',
+      entries: [] as PortfolioEntry[],
     },
     interests: {
+      href: '/interests',
       number: '05',
       eyebrow: 'Beyond the screen',
       title: 'Activities & Interests',
-      intro: 'The experiences, questions, and pursuits that shape how I see the world.',
-      placeholder: 'Activities and interests will be added here.',
-      note: 'No activity or interest details were included in the reference.',
+      intro: 'Activities, interests, and community involvement.',
+      emptyTitle: 'Activity and interest details haven’t been added yet.',
+      emptyNote: 'The reference image shows this page in the navigation but doesn’t include its entries. Add activities, roles, and interests here.',
+      entries: [] as PortfolioEntry[],
     },
   },
   contact: {
     eyebrow: 'Let’s connect',
     title: 'Have a thoughtful idea in mind?',
     body: 'I’m interested in building useful things and learning from people who care about how technology affects us.',
-    placeholder: 'Contact details will be added here.',
+    placeholder: 'Add a contact email in the portfolio content to make this page actionable.',
     email: '',
   },
-  backToTop: 'Back to top',
   footer: 'A personal portfolio, built around curiosity and care.',
 };
+
+export type PortfolioPageKey = keyof typeof portfolio.pages;
