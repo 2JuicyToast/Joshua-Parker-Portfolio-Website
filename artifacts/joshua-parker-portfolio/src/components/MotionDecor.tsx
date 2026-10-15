@@ -15,7 +15,7 @@ export function MotionDecor({ theme }: MotionDecorProps) {
       ) : theme === 'writing' ? (
         <img
           className="decor-quill-book"
-          src={publicAsset('writing-quill-book.jpg')}
+          src={publicAsset('writing-quill-book.png')}
           alt=""
           draggable={false}
         />

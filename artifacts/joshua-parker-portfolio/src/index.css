@@ -242,7 +242,7 @@ a { color: inherit; }
 .abstract-smoke-three { width: 155px; height: 125px; right: -2%; top: 52%; animation-delay: -13s !important; }
 .motion-decor-interests .decor-lacrosse { width: 150px; height: 150px; right: 17%; top: 14%; opacity: .34; animation: sport-float 12s ease-in-out infinite alternate; }
 .motion-decor-interests .decor-swords { width: 132px; height: 132px; right: 5%; top: 37%; opacity: .27; animation: sport-float 15s ease-in-out infinite alternate-reverse; }
-.motion-decor-writing .decor-quill-book { width: clamp(180px, 24vw, 270px); height: auto; right: 7%; top: 5%; opacity: .38; mix-blend-mode: darken; animation: paper-float 14s ease-in-out infinite alternate; }
+.motion-decor-writing .decor-quill-book { width: clamp(180px, 24vw, 270px); height: auto; right: 7%; top: 5%; opacity: .42; animation: paper-float 14s ease-in-out infinite alternate; }
 @keyframes sport-float {
   from { transform: translate3d(-5px, 5px, 0) rotate(-3deg); }
   to { transform: translate3d(7px, -6px, 0) rotate(3deg); }
