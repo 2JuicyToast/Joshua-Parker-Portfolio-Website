@@ -5,11 +5,13 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 ## Run & Operate
 
 - Install dependencies with `pnpm install --frozen-lockfile` from the repository root.
-- Start the managed workflow `artifacts/joshua-parker-portfolio: web` to run the portfolio at `/`. Its artifact configuration supplies `PORT=21915` and `BASE_PATH=/`; do not run Vite without these values.
-- Start `artifacts/api-server: API Server` for the Express service on port 8080, routed under `/api`. Check it through `/api/healthz`.
-- The optional `artifacts/mockup-sandbox: Component Preview Server` workflow serves the existing design sandbox at `/__mockup`. It is not required to run the portfolio.
+- Start the managed workflow `artifacts/joshua-parker-portfolio: web` to open the portfolio at `/`. It supplies `PORT` and `BASE_PATH`; Vite also has safe defaults for local builds.
+- For a manual start, run `pnpm --filter @workspace/joshua-parker-portfolio run dev`.
+- The portfolio is frontend-only. The API server and mockup sandbox are not required to run or publish it.
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
+- `pnpm --filter @workspace/joshua-parker-portfolio run build:github-pages` — build the GitHub Pages Viewer version, including a nested-route fallback.
+- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; GitHub Pages must be set to deploy from **GitHub Actions** in repository settings.
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - No secrets or external services are needed for the current portfolio or API health endpoint. `DATABASE_URL` is required only if adding features that import the existing database library; no database is currently used by these running services.
@@ -40,6 +42,12 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 ## Product
 
 Separate pages for Home, Projects, Current Ventures, Writing, Awards & Recognition, Activities & Interests, and Contact Me. The imported portrait and contact placeholders are intentionally preserved.
+
+## Developer and Viewer modes
+
+- **Developer mode** runs in Vite development mode in Replit. Edit `artifacts/joshua-parker-portfolio/src/content.ts` for portfolio copy; changes appear in the preview as they are saved.
+- **Viewer mode** is the optimized static build published by GitHub Pages. It updates after changes are pushed or merged to the repository's `main` branch and the Pages workflow succeeds; unpushed Replit edits are not published.
+- GitHub Pages uses the repository path `/Joshua-Parker-Portfolio-Website/` by default. Set `GITHUB_PAGES_BASE=/` for a root-domain Pages site or custom domain.
 
 ## User preferences
 

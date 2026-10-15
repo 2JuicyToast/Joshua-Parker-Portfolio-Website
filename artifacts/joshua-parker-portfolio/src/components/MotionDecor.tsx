@@ -1,3 +1,5 @@
+import { publicAsset } from '../lib/public-asset';
+
 type MotionDecorProps = {
   theme: 'abstract' | 'interests' | 'writing';
 };
@@ -7,8 +9,8 @@ export function MotionDecor({ theme }: MotionDecorProps) {
     <div className={`motion-decor motion-decor-${theme}`} aria-hidden="true">
       {theme === 'interests' ? (
         <>
-          <img className="decor-lacrosse" src="/lacrosse-stick-doodle.png" alt="" draggable={false} />
-          <img className="decor-swords" src="/hema-sword-doodle.png" alt="" draggable={false} />
+          <img className="decor-lacrosse" src={publicAsset('lacrosse-stick-doodle.png')} alt="" draggable={false} />
+          <img className="decor-swords" src={publicAsset('hema-sword-doodle.png')} alt="" draggable={false} />
         </>
       ) : theme === 'writing' ? (
         <>

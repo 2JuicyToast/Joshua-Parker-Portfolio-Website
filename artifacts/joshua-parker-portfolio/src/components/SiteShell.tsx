@@ -125,6 +125,12 @@ export function SiteShell({ children }: PropsWithChildren) {
               {item.label}
             </Link>
           ))}
+          <span
+            className={`site-mode-indicator ${import.meta.env.DEV ? 'is-developer' : 'is-viewer'}`}
+            aria-label={import.meta.env.DEV ? 'Developer mode' : 'Viewer mode'}
+          >
+            {import.meta.env.DEV ? 'Developer mode' : 'Viewer mode'}
+          </span>
         </nav>
       </header>
 

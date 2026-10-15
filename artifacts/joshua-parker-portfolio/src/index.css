@@ -126,6 +126,8 @@ a { color: inherit; }
 .navigation { display: flex; align-items: center; gap: 5px; }
 .navigation a { font-size: 11px; text-decoration: none; color: hsl(var(--foreground) / .83); padding: 9px 12px; border-radius: 5px; transition: background .25s, color .25s; }
 .navigation a:hover, .navigation .nav-active { background: hsl(8 33% 83% / .56); color: hsl(var(--primary)); }
+.site-mode-indicator { margin-left: 5px; padding: 6px 8px; border: 1px solid hsl(var(--border)); border-radius: 999px; color: hsl(var(--muted-foreground)); font-size: 9px; font-weight: 600; white-space: nowrap; }
+.site-mode-indicator.is-developer { border-color: hsl(8 40% 60% / .55); color: hsl(var(--primary)); background: hsl(8 33% 83% / .3); }
 .menu-toggle { display: none; }
 .hero { min-height: 455px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 65px; padding-block: 58px 60px; position: relative; }
 .hero::before, .hero::after {

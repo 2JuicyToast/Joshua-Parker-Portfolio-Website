@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { portfolio } from '../content';
+import { publicAsset } from '../lib/public-asset';
 
 function ArrowMark({ diagonal = false }: { diagonal?: boolean }) {
   return <span aria-hidden="true" className="arrow-mark">{diagonal ? '↗' : '→'}</span>;
@@ -38,7 +39,7 @@ export function HomePage() {
         <aside className="portrait-stage reveal reveal-delay-2" aria-label="Portrait">
           <div className="portrait-card">
             <div className="portrait-inner">
-              <img className="portrait-image" src="/joshua-parker.jpg" alt={`Portrait of ${identity.name}`} />
+              <img className="portrait-image" src={publicAsset('joshua-parker.jpg')} alt={`Portrait of ${identity.name}`} />
             </div>
           </div>
           <span className="orbit orbit-one" /><span className="orbit orbit-two" />
