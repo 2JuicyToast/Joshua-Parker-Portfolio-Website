@@ -7,12 +7,12 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 - Install dependencies with `pnpm install --frozen-lockfile` from the repository root.
 - Start the managed workflow `artifacts/joshua-parker-portfolio: web` to open the portfolio at `/`. It supplies `PORT` and `BASE_PATH`; Vite also has safe defaults for local builds.
 - For a manual start, run `pnpm --filter @workspace/joshua-parker-portfolio run dev`.
-- In Developer mode, click **Developer mode · Edit** to edit portfolio text and add cards. **Save changes** persists edits in the current browser only; the published Viewer continues to use source-controlled content.
+- In Developer mode, click **Developer mode · Edit** to edit portfolio text and add cards. **Save changes** persists edits in the current browser only. To publish them, download **Viewer content**, replace `artifacts/joshua-parker-portfolio/public/portfolio-content.json`, then commit and push to `main`.
 - The portfolio is frontend-only. The API server and mockup sandbox are not required to run or publish it.
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/joshua-parker-portfolio run build:github-pages` — build the GitHub Pages Viewer version, including a nested-route fallback.
-- `pnpm --filter @workspace/joshua-parker-portfolio run verify:github-pages` — verify base-path asset URLs, the icon, Jekyll bypass, and route fallback in the built Viewer.
+- `pnpm --filter @workspace/joshua-parker-portfolio run verify:github-pages` — verify base-path asset URLs, the public content JSON, icon, Jekyll bypass, and route fallback in the built Viewer.
 - Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; the workflow checks that GitHub Pages **Settings → Pages → Build and deployment → Source** is **GitHub Actions** and validates the Viewer files before deploying. A branch/Jekyll deployment can report success while publishing the wrong page.
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)

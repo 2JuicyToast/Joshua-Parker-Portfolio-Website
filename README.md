@@ -7,7 +7,8 @@ The portfolio runs as a live development preview in Replit and publishes as a st
 1. Run `pnpm install --frozen-lockfile` from the repository root.
 2. Start the managed Replit workflow `artifacts/joshua-parker-portfolio: web`.
 3. Edit portfolio copy in `artifacts/joshua-parker-portfolio/src/content.ts`; the development preview refreshes as files are saved.
-4. Or click **Developer mode · Edit** in the preview to edit content and add cards. **Save changes** stores edits in that browser's local storage; edits do not automatically change the source files or the published Viewer site.
+4. Or click **Developer mode · Edit** in the preview to edit content and add cards. **Save changes** stores edits in that browser's local storage.
+5. To publish those edits, click **Download Viewer content** in the editor and replace `artifacts/joshua-parker-portfolio/public/portfolio-content.json` with the downloaded file. Commit and push it to `main`; the Pages workflow will build the Viewer with that content. Do not put passwords or private information in the public content file.
 
 To start the development server manually:
 
@@ -23,7 +24,7 @@ Set the repository's **Settings → Pages → Build and deployment → Source** 
 
 <https://2JuicyToast.github.io/Joshua-Parker-Portfolio-Website/>
 
-Changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes successfully. Unpushed edits remain in Developer mode.
+Source-controlled changes made in Replit appear on GitHub Pages after they are pushed or merged to `main` and the deployment workflow finishes successfully. Browser-saved edits are exported through `public/portfolio-content.json` before publishing.
 
 To build the Viewer site locally:
 

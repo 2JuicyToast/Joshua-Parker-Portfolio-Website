@@ -103,6 +103,20 @@ export function ContentEditor({ onClose }: { onClose: () => void }) {
   const ventureSections = portfolio.pages.ventures.sections;
   const recognitionSection = portfolio.pages.recognition.sections[0];
 
+  const downloadViewerContent = () => {
+    const file = new Blob([`${JSON.stringify(content, null, 2)}\n`], {
+      type: 'application/json',
+    });
+    const fileUrl = window.URL.createObjectURL(file);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = fileUrl;
+    downloadLink.download = 'portfolio-content.json';
+    document.body.append(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+    window.setTimeout(() => window.URL.revokeObjectURL(fileUrl), 1000);
+  };
+
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
@@ -135,8 +149,15 @@ export function ContentEditor({ onClose }: { onClose: () => void }) {
           </button>
         </header>
         <p className="content-editor-note">
-          Saved edits stay in this browser and update this preview. They do not change the published Viewer site.
+          Save keeps edits in this browser. To publish them, download the Viewer file below, replace
+          {' '}<code>public/portfolio-content.json</code>, then push the project to <code>main</code>.
         </p>
+        <div className="content-editor-export">
+          <span>Anyone can view this content after it is published. Don’t put passwords or private information here.</span>
+          <button className="editor-add-button" type="button" onClick={downloadViewerContent}>
+            <span aria-hidden="true">↓</span> Download Viewer content
+          </button>
+        </div>
 
         <div className="content-editor-body">
           <details className="content-editor-group" open>

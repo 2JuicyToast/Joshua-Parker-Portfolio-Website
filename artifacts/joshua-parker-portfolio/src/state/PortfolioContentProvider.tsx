@@ -3,6 +3,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type PropsWithChildren,
 } from 'react';
@@ -12,6 +13,7 @@ import {
   type PortfolioEntry,
   type WritingSection,
 } from '../content';
+import { publicAsset } from '../lib/public-asset';
 
 export type EditablePortfolioContent = {
   portfolio: typeof defaultPortfolio;
@@ -47,33 +49,49 @@ function createDefaultContent(): EditablePortfolioContent {
   };
 }
 
+function parseEditableContent(value: unknown): EditablePortfolioContent {
+  if (
+    !value ||
+    typeof value !== 'object' ||
+    !('portfolio' in value) ||
+    !('writingSections' in value) ||
+    !Array.isArray(value.writingSections)
+  ) {
+    throw new Error('Portfolio content file has an unexpected format.');
+  }
+
+  const candidate = value as EditablePortfolioContent;
+  if (
+    !candidate.portfolio ||
+    typeof candidate.portfolio !== 'object' ||
+    !candidate.portfolio.identity ||
+    !candidate.portfolio.pages
+  ) {
+    throw new Error('Portfolio content file is missing required page data.');
+  }
+  return candidate;
+}
+
 function readInitialContent() {
   const fallback = createDefaultContent();
   if (!isDeveloper || typeof window === 'undefined') {
-    return { content: fallback, message: '' };
+    return { content: fallback, message: '', fromStorage: false };
   }
 
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (!saved) return { content: fallback, message: '' };
-
-    const parsed: unknown = JSON.parse(saved);
-    if (
-      !parsed ||
-      typeof parsed !== 'object' ||
-      !('portfolio' in parsed) ||
-      !('writingSections' in parsed) ||
-      !Array.isArray(parsed.writingSections)
-    ) {
-      throw new Error('Saved portfolio data has an unexpected format.');
-    }
-
-    return { content: parsed as EditablePortfolioContent, message: 'Loaded saved edits from this browser.' };
+    if (!saved) return { content: fallback, message: '', fromStorage: false };
+    return {
+      content: parseEditableContent(JSON.parse(saved)),
+      message: 'Loaded saved edits from this browser.',
+      fromStorage: true,
+    };
   } catch (error) {
     console.error('Could not load saved portfolio edits:', error);
     return {
       content: fallback,
       message: 'Saved edits could not be read. Your original content is loaded; saving will replace the damaged browser copy.',
+      fromStorage: false,
     };
   }
 }
@@ -99,6 +117,8 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
   const [savedContent, setSavedContent] = useState(initial.content);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [saveMessage, setSaveMessage] = useState(initial.message);
+  const hasUnsavedChangesRef = useRef(false);
+  const hasLocalSaveRef = useRef(initial.fromStorage);
 
   const updateContent = useCallback((path: PortfolioContentPath, value: unknown) => {
     setContent((current) => {
@@ -106,6 +126,7 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
       setPath(next as unknown as Record<string | number, unknown>, path, value);
       return next;
     });
+    hasUnsavedChangesRef.current = true;
     setHasUnsavedChanges(true);
     setSaveMessage('');
   }, []);
@@ -149,6 +170,7 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
       }
       return next;
     });
+    hasUnsavedChangesRef.current = true;
     setHasUnsavedChanges(true);
     setSaveMessage('');
   }, []);
@@ -157,6 +179,8 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
     if (!isDeveloper || typeof window === 'undefined') return false;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+      hasLocalSaveRef.current = true;
+      hasUnsavedChangesRef.current = false;
       setSavedContent(clone(content));
       setHasUnsavedChanges(false);
       setSaveMessage('Saved in this browser.');
@@ -169,10 +193,41 @@ export function PortfolioContentProvider({ children }: PropsWithChildren) {
   }, [content]);
 
   const discardChanges = useCallback(() => {
+    hasUnsavedChangesRef.current = false;
     setContent(clone(savedContent));
     setHasUnsavedChanges(false);
     setSaveMessage('Unsaved edits discarded.');
   }, [savedContent]);
+
+  useEffect(() => {
+    if (initial.fromStorage || hasLocalSaveRef.current) return;
+    let active = true;
+
+    fetch(publicAsset('portfolio-content.json'), { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Portfolio content request failed with status ${response.status}.`);
+        }
+        return response.json() as Promise<unknown>;
+      })
+      .then((value) => {
+        if (!active || hasUnsavedChangesRef.current || value === null) return;
+        const publishedContent = parseEditableContent(value);
+        setContent(clone(publishedContent));
+        setSavedContent(clone(publishedContent));
+        if (isDeveloper) setSaveMessage('Loaded content from the project Viewer file.');
+      })
+      .catch((error: unknown) => {
+        console.error('Could not load the project Viewer content file:', error);
+        if (active && isDeveloper) {
+          setSaveMessage('Could not load the project Viewer content file. Default content is shown.');
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [initial.fromStorage]);
 
   useEffect(() => {
     if (!isDeveloper || !hasUnsavedChanges) return;

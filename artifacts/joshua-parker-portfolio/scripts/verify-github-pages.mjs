@@ -21,6 +21,22 @@ assert.doesNotMatch(html, /Jekyll|github-pages-build/, 'The output must not be a
 const noJekyllPath = resolve(outputDir, '.nojekyll');
 await access(noJekyllPath);
 
+const contentFilePath = resolve(outputDir, 'portfolio-content.json');
+const contentFile = await readFile(contentFilePath, 'utf8');
+assert.ok(Buffer.byteLength(contentFile) <= 1_000_000, 'Published portfolio content must stay under 1 MB.');
+const contentFileData = JSON.parse(contentFile);
+if (contentFileData !== null) {
+  assert.ok(
+    contentFileData &&
+      typeof contentFileData === 'object' &&
+      contentFileData.portfolio &&
+      contentFileData.portfolio.identity &&
+      contentFileData.portfolio.pages &&
+      Array.isArray(contentFileData.writingSections),
+    'Published portfolio content must contain portfolio identity/pages and writing sections.',
+  );
+}
+
 const resources = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
   .map((match) => match[1])
   .filter((path) => path.startsWith(base) && path !== base);
@@ -43,4 +59,4 @@ assert.ok(icon.length < 250_000, 'The portfolio icon should stay optimized for b
 assert.ok(html.includes(`${base}parker-monogram.png`), 'The HTML must reference the portfolio icon under the configured Pages base.');
 
 console.log(`GitHub Pages artifact verified at base path "${base}".`);
-console.log(`Checked ${assetResources.length} bundled assets, the PNG icon, .nojekyll, and the direct-route fallback.`);
+console.log(`Checked ${assetResources.length} bundled assets, portfolio content JSON, the PNG icon, .nojekyll, and the direct-route fallback.`);
