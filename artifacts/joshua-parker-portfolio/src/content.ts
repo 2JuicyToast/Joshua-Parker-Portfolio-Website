@@ -49,13 +49,13 @@ export const writingSections: WritingSection[] = [
     id: 'personal-essays',
     title: 'Personal Essays & Commentary',
     description:
-      'Essays written for personal interest, observations, opinions, and other topics explored for non-academic purposes',
+      'Essays written for personal interest or to explore observations, opinions, and other non-academic topics.',
     documents: [],
   },
   {
     id: 'creative-works',
     title: 'Creative Works',
-    description: 'Books, webnovels, short stories, and other creative works',
+    description: 'Books, web novels, short stories, and other creative works.',
     documents: [],
   },
 ];
