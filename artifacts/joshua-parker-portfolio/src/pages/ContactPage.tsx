@@ -20,7 +20,7 @@ export function ContactPage() {
           <div className="business-card-main">
             <p className="eyebrow">Get in touch</p>
             <h2 className="serif">{portfolio.identity.name}<span className="period">.</span></h2>
-            <p className="business-card-role">Computer Engineering Student<br />Builder · Writer · Ethical Innovator</p>
+            <p className="business-card-role">Computer Engineering Student<br />Innovator · Writer</p>
           </div>
           <div className="business-card-bottom">
             <div className="business-card-details">

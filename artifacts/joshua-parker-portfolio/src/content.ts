@@ -51,12 +51,12 @@ const safeLinkBeacon: PortfolioEntry = {
 
 export const portfolio = {
   identity: {
-    name: 'Joshua Parker',
+    name: 'Joshua D. Parker',
     location: 'Dover, Delaware',
     classYear: 'Class of 2027',
-    headline: 'Dual Enrollment Computer Engineering Student | Builder | Writer | Ethical Innovator.',
+    headline: 'Dual Enrollment Computer Engineering Student | Innovator | Writer.',
     introduction:
-      "I’m a Class of 2027 dual-enrollment computer engineering student from Dover, Delaware. I build technology, share my ideas through writing, and explore how innovation can be useful, responsible, and people-focused.",
+      'Class of 2027 dual-enrollment computer engineering student from Dover, Delaware. I build technology, share my ideas through writing, and explore how innovation can be useful, responsible, and people-focused.',
     portraitLabel: 'Professional photo placeholder',
     portraitNote: 'A portrait can be added here when one is available.',
   },
