@@ -8,12 +8,12 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 - Start the managed workflow `artifacts/joshua-parker-portfolio: web` to open the portfolio at `/`. It supplies `PORT` and `BASE_PATH`; Vite also has safe defaults for local builds.
 - For a manual start, run `pnpm --filter @workspace/joshua-parker-portfolio run dev`.
 - In Developer mode, start both `artifacts/api-server: API Server` and `artifacts/joshua-parker-portfolio: web`. The editor signs into GitHub as `2JuicyToast`; **Publish changes** commits `artifacts/joshua-parker-portfolio/public/portfolio-content.json` to `main`, which triggers the Viewer build. Configure `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` as Replit Secrets; the callback URL is the Replit development domain plus `/api/portfolio/publisher/callback`.
-- GitHub Pages must use **Settings → Pages → Build and deployment → Source → GitHub Actions**. The workflow builds the Viewer and publishes the `dist/public` artifact.
+- GitHub Pages must use **Settings → Pages → Build and deployment → Source → GitHub Actions**. The workflow builds the Viewer and publishes the `dist/public` artifact. If the site still shows the README, push the updated workflow and run **Deploy portfolio to GitHub Pages** from the Actions tab.
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/joshua-parker-portfolio run build:github-pages` — build the GitHub Pages Viewer version, including a nested-route fallback.
 - `pnpm --filter @workspace/joshua-parker-portfolio run verify:github-pages` — verify base-path asset URLs, public content JSON, icon, Jekyll bypass, and route fallback.
-- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; it verifies the Pages source setting, builds the Viewer, and deploys it with GitHub Actions.
+- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; it builds the Viewer and deploys it with GitHub Actions.
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - GitHub OAuth client ID and secret are required for editor auto-publishing. `SESSION_SECRET` protects the server-side session. No database is used; `DATABASE_URL` is required only if adding features that import the existing database library.
