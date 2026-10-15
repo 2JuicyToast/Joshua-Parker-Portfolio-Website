@@ -119,6 +119,11 @@ async function verifyDeployedViewer(attempt) {
   assert.match(stylesheet, /@keyframes atmosphere-drift/, 'The deployed stylesheet is missing the moving smoky background.');
   assert.match(stylesheet, /@keyframes sport-float/, 'The deployed stylesheet is missing the floating doodle animation.');
   assert.match(stylesheet, /@keyframes smoke-drift/, 'The deployed stylesheet is missing the smoke animation.');
+  const backdropRule = stylesheet.match(/\.slideshow-backdrop\{([^}]*)\}/)?.[1] ?? '';
+  assert.match(backdropRule, /position:fixed/, 'The deployed slideshow backdrop must be fixed to the viewport.');
+  assert.match(backdropRule, /place-items:safe center/, 'The deployed slideshow must stay centered and reachable on small screens.');
+  assert.match(backdropRule, /(?:-webkit-)?backdrop-filter:blur\(8px\)/, 'The deployed slideshow must blur the page behind it.');
+  assert.match(script, /site-quote/, 'The deployed page is missing the Tesla quote content.');
 
 for (const filename of [
   'favicon.svg',

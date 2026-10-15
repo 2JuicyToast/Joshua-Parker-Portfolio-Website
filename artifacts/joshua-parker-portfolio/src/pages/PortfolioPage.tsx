@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'wouter';
 import type { PortfolioPageKey } from '../content';
 import { MotionDecor } from '../components/MotionDecor';
@@ -18,15 +19,12 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
   useEffect(() => {
     if (!selectedProject) return;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setSelectedProject(null);
     };
 
     window.addEventListener('keydown', closeOnEscape);
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', closeOnEscape);
     };
   }, [selectedProject]);
@@ -113,7 +111,7 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
           <Link className="button button-outline" href="/">Back to Home <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
-      {selectedProject && (
+      {selectedProject && createPortal(
         <div className="slideshow-backdrop" role="presentation" onClick={() => setSelectedProject(null)}>
           <section
             className={`slideshow-dialog${selectedProject === 'SafeLink Beacon' ? ' pdf-viewer-dialog' : ''}`}
@@ -171,7 +169,8 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
               </>
             )}
           </section>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );

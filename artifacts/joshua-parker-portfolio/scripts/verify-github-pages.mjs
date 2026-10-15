@@ -86,6 +86,10 @@ assert.doesNotMatch(css, /project-pitch-deck|project-deck-frame/, 'The Projects 
 assert.match(css, /@keyframes atmosphere-drift/, 'The published stylesheet must include the moving smoky background.');
 assert.match(css, /@keyframes sport-float/, 'The published stylesheet must include the sports decoration animation.');
 assert.match(css, /@keyframes smoke-drift/, 'The published stylesheet must include the smoke animation.');
+const backdropRule = css.match(/\.slideshow-backdrop\{([^}]*)\}/)?.[1] ?? '';
+assert.match(backdropRule, /position:fixed/, 'The slideshow backdrop must be fixed to the viewport.');
+assert.match(backdropRule, /place-items:safe center/, 'The slideshow dialog must be centered and remain reachable on small screens.');
+assert.match(backdropRule, /(?:-webkit-)?backdrop-filter:blur\(8px\)/, 'The slideshow backdrop must blur the page behind it.');
 
 const js = await readFile(resolve(outputDir, 'script.js'), 'utf8');
 assert.ok(
@@ -101,6 +105,21 @@ assert.ok(js.includes('View Pitch Deck'), 'The SafeLink card must retain its Vie
 assert.ok(js.includes('safelink-pitch-deck-dialog'), 'The SafeLink deck must remain available in the button-triggered dialog.');
 assert.doesNotMatch(js, /project-pitch-deck/, 'The production bundle must not render the deck inline on the Projects page.');
 assert.ok(js.includes('safelink-beacon-smash-national-pitch-deck.pdf'), 'The production bundle must reference the SafeLink PDF.');
+assert.ok(js.includes('site-quote'), 'The Tesla quote must remain part of the page content.');
+
+const portfolioPageSource = await readFile(resolve(packageDir, '..', 'src', 'pages', 'PortfolioPage.tsx'), 'utf8');
+assert.match(portfolioPageSource, /createPortal\([\s\S]*?document\.body/, 'The slideshow must be attached to the viewport-level document layer.');
+assert.doesNotMatch(
+  portfolioPageSource,
+  /document\.body\.style\.overflow\s*=\s*['"]hidden['"]/,
+  'Opening the slideshow must not disable scrolling on the page.',
+);
+const siteShellSource = await readFile(resolve(packageDir, '..', 'src', 'components', 'SiteShell.tsx'), 'utf8');
+assert.match(
+  siteShellSource,
+  /<main className="site-main"[\s\S]*?\{children\}[\s\S]*?<section className="site-quote/,
+  'The Tesla quote must be inside the page main content, not in the footer.',
+);
 for (const filename of ['writing-quill-book.png', 'lacrosse-stick-doodle.png', 'hema-sword-doodle.png']) {
   assert.ok(js.includes(filename), `The production bundle must reference the ${filename} decoration.`);
 }

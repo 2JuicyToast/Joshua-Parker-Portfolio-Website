@@ -109,12 +109,13 @@ export function SiteShell({ children }: PropsWithChildren) {
         </nav>
       </header>
 
-      <main className="site-main" key={location}>{children}</main>
-
-      <section className="site-quote content-width" aria-label="Nikola Tesla quote">
-        <blockquote>{portfolio.quote.text}</blockquote>
-        <p>— {portfolio.quote.attribution}</p>
-      </section>
+      <main className="site-main" key={location}>
+        {children}
+        <section className="site-quote content-width" aria-label="Nikola Tesla quote">
+          <blockquote>{portfolio.quote.text}</blockquote>
+          <p>— {portfolio.quote.attribution}</p>
+        </section>
+      </main>
 
       <footer className="site-footer content-width">
         <div>
