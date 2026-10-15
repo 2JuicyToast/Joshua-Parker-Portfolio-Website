@@ -120,6 +120,7 @@ for (const filename of [
   'lacrosse-stick-doodle.png',
   'parker-monogram.png',
   'portfolio-content.json',
+  'safelink-beacon-smash-national-pitch-deck.pdf',
   'writing-quill-book.png',
 ]) {
     const assetUrl = new URL(`assets/${filename}`, baseUrl);
@@ -130,6 +131,13 @@ for (const filename of [
     assert.equal(response.status, 200, `The deployed ${filename} asset returned HTTP ${response.status}.`);
     const bytes = await response.arrayBuffer();
     assert.ok(bytes.byteLength > 0, `The deployed ${filename} asset is empty.`);
+    if (filename === 'safelink-beacon-smash-national-pitch-deck.pdf') {
+      assert.equal(
+        Buffer.from(bytes).subarray(0, 5).toString('ascii'),
+        '%PDF-',
+        'The deployed SafeLink pitch deck is not a valid PDF.',
+      );
+    }
   }
 
   return verifiedRoutes;

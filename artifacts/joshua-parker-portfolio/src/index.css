@@ -331,7 +331,7 @@ a { color: inherit; }
 .pdf-viewer-heading h2 { margin: 0; font-size: clamp(24px, 3vw, 32px); }
 .pdf-viewer-description { margin: 8px 0 0; color: hsl(var(--muted-foreground)); font-size: 12px; line-height: 1.6; }
 .pdf-viewer-frame { display: block; flex: 1 1 auto; width: 100%; min-height: 280px; border: 1px solid hsl(var(--border)); border-radius: 8px; background: #fff; }
-.pdf-viewer-actions { display: flex; flex: 0 0 auto; justify-content: flex-end; padding-top: 12px; }
+.pdf-viewer-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; justify-content: flex-end; gap: 10px; padding-top: 12px; }
 .pdf-viewer-actions .button { font-size: 10px; }
 .page-entry-link { display: inline-flex; gap: 8px; width: fit-content; margin-top: 8px; color: hsl(var(--primary)); font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .page-return { display: flex; justify-content: flex-end; padding-top: 28px; }

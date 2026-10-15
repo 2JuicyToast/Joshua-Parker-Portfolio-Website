@@ -44,6 +44,10 @@ if (contentFileData !== null) {
   );
 }
 
+const pitchDeckPath = resolve(outputDir, 'assets', 'safelink-beacon-smash-national-pitch-deck.pdf');
+const pitchDeck = await readFile(pitchDeckPath);
+assert.ok(pitchDeck.subarray(0, 5).equals(Buffer.from('%PDF-')), 'The published SafeLink pitch deck must be a valid PDF.');
+
 const resources = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
   .map((match) => match[1])
   .filter((path) => path.startsWith(base) && path !== base);
