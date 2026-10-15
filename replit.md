@@ -30,6 +30,7 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 
 - `artifacts/joshua-parker-portfolio/src/` — portfolio pages, components, and styles
 - `artifacts/joshua-parker-portfolio/src/content.ts` — portfolio text and contact fields
+- Writing PDFs go in `artifacts/joshua-parker-portfolio/public/writing/`; add each title and filename to its category in `writingSections` in `src/content.ts`.
 - `artifacts/api-server/src/` — Express service and health endpoint
 - `artifacts/mockup-sandbox/` — optional component preview sandbox
 - `lib/` — shared API specification, generated clients/validators, and unused database scaffold

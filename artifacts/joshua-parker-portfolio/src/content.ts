@@ -23,6 +23,44 @@ export type PortfolioPageSection = {
   copy?: string;
 };
 
+export type WritingDocument = {
+  title: string;
+  filename: string;
+  description?: string;
+};
+
+export type WritingSection = {
+  id: string;
+  title: string;
+  description: string;
+  documents: WritingDocument[];
+};
+
+/** Add PDFs to public/writing and list their filenames in the matching section. */
+export const writingSections: WritingSection[] = [
+  {
+    id: 'academic-professional',
+    title: 'Academic & Professional Writing',
+    description:
+      'Essays, research papers, reflections, technical writing, reports, scholarship essays, presentations, etc.',
+    documents: [],
+  },
+  {
+    id: 'personal-essays',
+    title: 'Personal Essays & Commentary',
+    description:
+      'Essays written for personal interest, observations, opinions, culture, technology, life experiences, and topics you explore outside of school.',
+    documents: [],
+  },
+  {
+    id: 'creative-works',
+    title: 'Creative Works',
+    description:
+      'Books, webtoons, comics, short stories, worldbuilding projects, scripts, and other narrative works.',
+    documents: [],
+  },
+];
+
 const myCom: PortfolioEntry = {
   title: 'MyCommNet',
   eyebrow: '01 / Community technology',
@@ -142,12 +180,7 @@ export const portfolio = {
       eyebrow: 'Words & ideas',
       title: 'Writing',
       intro: '',
-      sections: [
-        {
-          title: 'Writing page to be developed',
-          copy: 'This section is still in progress.',
-        },
-      ] as PortfolioPageSection[],
+      sections: [] as PortfolioPageSection[],
     },
     recognition: {
       href: '/recognition',
