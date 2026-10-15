@@ -40,7 +40,6 @@ export function HomePage() {
             <div className="portrait-inner">
               <img className="portrait-image" src="/joshua-parker.jpg" alt={`Portrait of ${identity.name}`} />
             </div>
-            <span className="portrait-index mono">01 / JP</span>
           </div>
           <span className="orbit orbit-one" /><span className="orbit orbit-two" />
         </aside>
