@@ -18,22 +18,22 @@ export type PortfolioEntry = {
 export type PortfolioPageSection = {
   title?: string;
   entries?: PortfolioEntry[];
-  items?: { number: string; label: string }[];
+  items?: { number: string; label: string; description?: string }[];
   note?: string;
   copy?: string;
 };
 
 const myCom: PortfolioEntry = {
-  title: 'MyCom',
+  title: 'MyCommNet',
   eyebrow: '01 / Community technology',
   description:
     'A community-resource platform designed to help people discover local services, opportunities, groups, and events based on their location and situation.',
-  problem: '[Add the specific problem being addressed]',
+  problem: 'People don’t know about beneficial opportunities or resources in their area.',
   whatItDoes: 'Helps people discover relevant local resources.',
-  role: '[Add your role and contributions]',
-  tools: '[Add tools and skills used]',
+  role: 'Sole developer.',
+  tools: 'Web development, AI-assisted UI design and website blueprinting, and backend tools.',
   status: 'Active product in development',
-  learning: '[Add a key takeaway]',
+  learning: 'Creating profiles and working with backends and keys in web development.',
 };
 
 const safeLinkBeacon: PortfolioEntry = {
@@ -41,12 +41,12 @@ const safeLinkBeacon: PortfolioEntry = {
   eyebrow: '02 / Safety technology',
   description:
     'A handheld emergency-safety device concept designed to contact trusted contacts and preserve evidence when a phone may not be accessible or reliable.',
-  problem: '[Add the specific problem being addressed]',
+  problem: 'Safety technology can be complex to use, and people may lack evidence documenting an incident.',
   whatItDoes: 'Concept for contacting trusted contacts and preserving evidence.',
-  role: '[Add your role and contributions]',
-  tools: '[Add tools and skills used]',
+  role: 'Team manager, developer, and prototype creator.',
+  tools: 'PCB creation, electrical engineering knowledge, coding, and online CAD tools.',
   status: 'Prototype-stage product',
-  learning: '[Add a key takeaway]',
+  learning: 'Connecting wiring, creating prototypes, using CAD tools, and programming ESP32 devices.',
 };
 
 export const portfolio = {
@@ -110,9 +110,9 @@ export const portfolio = {
     projects: {
       href: '/projects',
       number: '01',
-      eyebrow: 'Selected work',
+      eyebrow: 'Current and previous products/Projects',
       title: 'Projects',
-      intro: 'Two ideas centered on making technology useful when it matters.',
+      intro: 'Browse both past projects and those currently in development.',
       sections: [
         {
           entries: [myCom, safeLinkBeacon],
@@ -160,10 +160,30 @@ export const portfolio = {
       sections: [
         {
           items: [
-            { number: '01', label: 'SMASH National Competition Winner' },
-            { number: '02', label: 'National Honor Society' },
-            { number: '03', label: 'Homecoming Court' },
-            { number: '04', label: 'Top 10 Academic Ranking' },
+            {
+              number: '01',
+              label: 'SMASH National Pitch Competition Winner',
+              description:
+                'Recognized as the first-place winner of the SMASH national pitch competition for demonstrating innovation, problem-solving, and the ability to develop impactful solutions in a competitive environment.',
+            },
+            {
+              number: '02',
+              label: 'National Honor Society',
+              description:
+                'Selected for membership in recognition of academic excellence, leadership, character, and commitment to community service.',
+            },
+            {
+              number: '03',
+              label: 'Homecoming Court',
+              description:
+                'Chosen by peers and the school community for leadership, school involvement, and positive contributions to campus life.',
+            },
+            {
+              number: '04',
+              label: 'Top 10 Academic Ranking',
+              description:
+                'Ranked among the top-performing students in my class throughout all four years of high school, maintaining a strong academic record and demonstrating consistent dedication to educational excellence.',
+            },
           ],
         },
       ] as PortfolioPageSection[],

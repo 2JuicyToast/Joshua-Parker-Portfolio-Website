@@ -16,7 +16,6 @@ export function ContactPage() {
           <div className="business-card-edge" aria-hidden="true" />
           <div className="business-card-top">
             <span className="business-card-monogram serif">JP</span>
-            <span className="mono business-card-index">DOVER, DE · 2027</span>
           </div>
           <div className="business-card-main">
             <p className="eyebrow">Get in touch</p>

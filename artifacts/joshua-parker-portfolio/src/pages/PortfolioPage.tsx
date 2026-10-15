@@ -59,7 +59,10 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
                   {section.items.map((item) => (
                     <li key={item.number}>
                       <span className="page-item-number mono">{item.number}</span>
-                      <span>{item.label}</span>
+                      <div className="page-item-copy">
+                        <span className="page-item-label">{item.label}</span>
+                        {item.description && <span className="page-item-description">{item.description}</span>}
+                      </div>
                     </li>
                   ))}
                 </ol>
