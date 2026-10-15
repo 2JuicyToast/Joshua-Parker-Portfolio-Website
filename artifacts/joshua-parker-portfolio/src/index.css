@@ -300,14 +300,6 @@ a { color: inherit; }
 .page-sections { display: grid; gap: 42px; }
 .page-content-section { min-width: 0; }
 .page-section-title { margin: 0 0 18px; font-size: clamp(23px, 3vw, 30px); font-weight: 500; }
-.project-pitch-deck {
-  display: grid; gap: 14px; margin-top: 22px; padding: 25px;
-  border: 1px solid hsl(var(--border) / .8); border-radius: 12px;
-  background: hsl(var(--card)); box-shadow: var(--shadow-card);
-}
-.project-pitch-deck-heading .eyebrow { margin-bottom: 7px; }
-.project-pitch-deck-heading h2 { margin: 0; font-size: clamp(24px, 3vw, 32px); font-weight: 500; }
-.project-deck-frame { flex: none; height: clamp(360px, 52vw, 620px); max-height: 72vh; }
 .page-entry-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .page-entry { display: flex; flex-direction: column; gap: 13px; min-width: 0; }
 .page-entry-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
@@ -468,8 +460,6 @@ a { color: inherit; }
   .page-empty h2 { font-size: 24px; }
   .page-entry { padding: 23px 19px; }
   .page-entry-list, .page-item-grid { grid-template-columns: 1fr; }
-  .project-pitch-deck { padding: 19px; }
-  .project-deck-frame { height: min(62vh, 520px); min-height: 300px; }
   .page-entry-heading { flex-direction: column; }
   .entry-status { max-width: none; }
   .project-details { grid-template-columns: 1fr; }
