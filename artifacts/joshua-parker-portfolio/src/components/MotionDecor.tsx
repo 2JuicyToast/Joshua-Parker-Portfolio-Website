@@ -7,14 +7,8 @@ export function MotionDecor({ theme }: MotionDecorProps) {
     <div className={`motion-decor motion-decor-${theme}`} aria-hidden="true">
       {theme === 'interests' ? (
         <>
-          <svg className="decor-lacrosse" viewBox="0 0 120 120" fill="none">
-            <path d="M31 92 75 31M70 28c14-8 26-6 32 2l-9 22c-10 5-20 3-28-3Z" />
-            <path d="m75 31 18 18M72 36l18 17M68 42l18 16M64 48l18 15" />
-          </svg>
-          <svg className="decor-swords" viewBox="0 0 120 120" fill="none">
-            <path d="m27 91 65-65M92 26l7 7M23 87l9 9M93 29 30 92M27 25l66 66M24 29l7-7M90 94l7-7" />
-            <path d="m45 76 8 8m-5-15 8 8M73 46l8 8m-5-15 8 8" />
-          </svg>
+          <img className="decor-lacrosse" src="/lacrosse-stick-doodle.png" alt="" draggable={false} />
+          <img className="decor-swords" src="/hema-sword-doodle.png" alt="" draggable={false} />
         </>
       ) : theme === 'writing' ? (
         <>

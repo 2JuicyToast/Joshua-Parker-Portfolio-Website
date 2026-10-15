@@ -8,6 +8,8 @@ export function SiteShell({ children }: PropsWithChildren) {
 
   useEffect(() => {
     setMenuOpen(false);
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    window.scrollTo({ top: 0, behavior });
   }, [location]);
 
   useEffect(() => {
@@ -55,6 +57,10 @@ export function SiteShell({ children }: PropsWithChildren) {
             target.classList.remove('motion-pointed');
             target.style.removeProperty('--spot-x');
             target.style.removeProperty('--spot-y');
+            target.style.removeProperty('--pointer-shift-x');
+            target.style.removeProperty('--pointer-shift-y');
+            target.style.removeProperty('--pointer-tilt-x');
+            target.style.removeProperty('--pointer-tilt-y');
           };
           target.addEventListener('pointermove', updatePointer, { passive: true });
           target.addEventListener('pointerleave', clearPointer, { passive: true });
@@ -122,7 +128,7 @@ export function SiteShell({ children }: PropsWithChildren) {
         </nav>
       </header>
 
-      <main>{children}</main>
+      <main className="site-main" key={location}>{children}</main>
 
       <section className="site-quote content-width" aria-label="Nikola Tesla quote">
         <blockquote>{portfolio.quote.text}</blockquote>
