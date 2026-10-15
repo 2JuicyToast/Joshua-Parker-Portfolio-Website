@@ -50,16 +50,15 @@ export function SiteShell({ children }: PropsWithChildren) {
 
       <main>{children}</main>
 
+      <section className="site-quote content-width" aria-label="Nikola Tesla quote">
+        <blockquote>{portfolio.quote.text}</blockquote>
+        <p>— {portfolio.quote.attribution}</p>
+      </section>
+
       <footer className="site-footer content-width">
         <div>
           <strong>{portfolio.identity.name}</strong>
           <span>{portfolio.identity.location}</span>
-        </div>
-        <p>{portfolio.footer}</p>
-        <div className="footer-links">
-          {portfolio.navigation.filter((item) => item.id !== 'home').map((item) => (
-            <Link key={item.href} href={item.href}>{item.label}</Link>
-          ))}
         </div>
       </footer>
     </div>

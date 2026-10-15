@@ -10,7 +10,7 @@ export type PortfolioEntry = {
   problem?: string;
   whatItDoes?: string;
   role?: string;
-  tools?: string[];
+  tools?: string;
   status?: string;
   learning?: string;
 };
@@ -28,8 +28,12 @@ const myCom: PortfolioEntry = {
   eyebrow: '01 / Community technology',
   description:
     'A community-resource platform designed to help people discover local services, opportunities, groups, and events based on their location and situation.',
+  problem: '[Add the specific problem being addressed]',
   whatItDoes: 'Helps people discover relevant local resources.',
+  role: '[Add your role and contributions]',
+  tools: '[Add tools and skills used]',
   status: 'Active product in development',
+  learning: '[Add a key takeaway]',
 };
 
 const safeLinkBeacon: PortfolioEntry = {
@@ -37,8 +41,12 @@ const safeLinkBeacon: PortfolioEntry = {
   eyebrow: '02 / Safety technology',
   description:
     'A handheld emergency-safety device concept designed to contact trusted contacts and preserve evidence when a phone may not be accessible or reliable.',
+  problem: '[Add the specific problem being addressed]',
   whatItDoes: 'Concept for contacting trusted contacts and preserving evidence.',
+  role: '[Add your role and contributions]',
+  tools: '[Add tools and skills used]',
   status: 'Prototype-stage product',
+  learning: '[Add a key takeaway]',
 };
 
 export const portfolio = {
@@ -59,6 +67,7 @@ export const portfolio = {
     { id: 'writing', label: 'Writing', href: '/writing' },
     { id: 'recognition', label: 'Awards & Recognition', href: '/recognition' },
     { id: 'interests', label: 'Activities & Interests', href: '/interests' },
+    { id: 'contact', label: 'Contact Me', href: '/contact' },
   ],
   actions: {
     projects: 'View Projects',
@@ -66,9 +75,9 @@ export const portfolio = {
     contact: 'Contact Me',
   },
   social: [
-    { label: 'GitHub', url: '' },
-    { label: 'LinkedIn', url: '' },
-    { label: 'Professional Instagram', url: '' },
+    { label: 'GitHub', url: 'https://github.com/' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/joshua-parker-b44275395/' },
+    { label: 'Professional Instagram', url: 'https://www.instagram.com/jscholars_academia/' },
   ],
   principle: {
     label: 'A principle I build by',
@@ -117,14 +126,6 @@ export const portfolio = {
       title: 'Current Ventures',
       intro: '',
       sections: [
-        {
-          title: 'Projects & Products',
-          entries: [myCom, safeLinkBeacon],
-        },
-        {
-          title: 'Future Concepts',
-          note: 'Space for future ideas and products.',
-        },
         {
           title: 'Current Ventures',
           entries: [
@@ -204,7 +205,6 @@ export const portfolio = {
     email: '',
     phone: '',
   },
-  footer: 'A personal portfolio, built around curiosity and care.',
 };
 
 export type PortfolioPageKey = keyof typeof portfolio.pages;

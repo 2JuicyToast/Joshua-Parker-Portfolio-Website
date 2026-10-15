@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'wouter';
 import { portfolio, type PortfolioPageKey } from '../content';
 
 export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
   const page = portfolio.pages[pageKey];
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   return (
     <>
@@ -26,22 +28,27 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
                           <h3 className="serif">{entry.title}</h3>
                           {entry.subtitle && <p className="entry-subtitle">{entry.subtitle}</p>}
                         </div>
-                        {entry.status && <span className="entry-status">{entry.status}</span>}
                       </div>
                       {entry.description && <p className="entry-description">{entry.description}</p>}
-                      {entry.whatItDoes && (
-                        <div className="project-highlight">
-                          <p className="eyebrow">What It Does</p>
-                          <p>{entry.whatItDoes}</p>
-                        </div>
-                      )}
-                      {(entry.problem || entry.role || entry.tools?.length || entry.learning) && (
+                      {(entry.problem || entry.whatItDoes || entry.role || entry.tools || entry.status || entry.learning) && (
                         <dl className="project-details">
                           {entry.problem && <div><dt>Problem</dt><dd>{entry.problem}</dd></div>}
+                          {entry.whatItDoes && <div><dt>What It Does</dt><dd>{entry.whatItDoes}</dd></div>}
                           {entry.role && <div><dt>My Role</dt><dd>{entry.role}</dd></div>}
-                          {entry.tools && entry.tools.length > 0 && <div><dt>Tools & Skills</dt><dd>{entry.tools.join(', ')}</dd></div>}
+                          {entry.tools && <div><dt>Tools & Skills</dt><dd>{entry.tools}</dd></div>}
+                          {entry.status && <div><dt>Status</dt><dd>{entry.status}</dd></div>}
                           {entry.learning && <div><dt>What I Learned</dt><dd>{entry.learning}</dd></div>}
                         </dl>
+                      )}
+                      {pageKey === 'projects' && (
+                        <button
+                          className="page-entry-link slideshow-trigger"
+                          type="button"
+                          onClick={() => setSelectedProject(entry.title)}
+                          data-testid={`button-view-slideshow-${entry.title.toLowerCase().replaceAll(' ', '-')}`}
+                        >
+                          View Slideshow <span aria-hidden="true">↗</span>
+                        </button>
                       )}
                     </article>
                   ))}
@@ -71,6 +78,34 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
           <Link className="button button-outline" href="/">Back to Home <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
+      {selectedProject && (
+        <div className="slideshow-backdrop" role="presentation" onClick={() => setSelectedProject(null)}>
+          <section
+            className="slideshow-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="slideshow-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="slideshow-close"
+              type="button"
+              aria-label="Close slideshow"
+              onClick={() => setSelectedProject(null)}
+            >
+              ×
+            </button>
+            <p className="eyebrow">{selectedProject}</p>
+            <h2 className="serif" id="slideshow-title">Project slideshow</h2>
+            <div className="slideshow-placeholder">Placeholder slides for the selected project.</div>
+            <div className="slideshow-controls">
+              <button type="button" disabled>← Previous</button>
+              <span>1 / 1</span>
+              <button type="button" disabled>Next →</button>
+            </div>
+          </section>
+        </div>
+      )}
     </>
   );
 }

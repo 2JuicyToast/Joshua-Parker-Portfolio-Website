@@ -6,7 +6,7 @@ function ArrowMark({ diagonal = false }: { diagonal?: boolean }) {
 }
 
 export function HomePage() {
-  const { identity, principle, skills, quote } = portfolio;
+  const { identity, principle, skills } = portfolio;
 
   return (
     <>
@@ -44,7 +44,6 @@ export function HomePage() {
             <span className="portrait-index mono">01 / JP</span>
           </div>
           <span className="orbit orbit-one" /><span className="orbit orbit-two" />
-          <span className="portrait-side-note mono">DOVER, DE<br />EST. 2027</span>
         </aside>
       </section>
 
@@ -79,13 +78,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="quote-wrap content-width">
-        <div className="quote-card">
-          <span className="quote-spark" aria-hidden="true" />
-          <blockquote className="serif">{quote.text}</blockquote>
-          <p className="quote-credit"><span /> {quote.attribution}</p>
-        </div>
-      </section>
     </>
   );
 }
