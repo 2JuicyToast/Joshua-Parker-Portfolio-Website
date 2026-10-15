@@ -19,7 +19,7 @@ export function CursorShadow() {
       if (event.pointerType === 'touch') return;
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        shadow.style.transform = `translate3d(${event.clientX - 125}px, ${event.clientY - 125}px, 0)`;
+        shadow.style.transform = `translate3d(${event.clientX - 60}px, ${event.clientY - 60}px, 0)`;
         shadow.style.opacity = '1';
       });
     };

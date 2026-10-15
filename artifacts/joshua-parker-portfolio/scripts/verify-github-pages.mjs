@@ -79,6 +79,10 @@ const css = await readFile(resolve(outputDir, 'styles.css'), 'utf8');
 assert.match(css, /decor-lacrosse/, 'The published stylesheet must include the lacrosse decoration.');
 assert.match(css, /decor-swords/, 'The published stylesheet must include the HEMA sword decoration.');
 assert.match(css, /global-cursor-shadow/, 'The published stylesheet must include the cursor effect.');
+assert.match(css, /\.global-cursor-shadow\{[^}]*width:120px/, 'The published cursor glow must use the smaller size.');
+assert.match(css, /ambient-smoke-orb/, 'The published stylesheet must include the full-page smoke orbs.');
+assert.match(css, /@keyframes smoke-orb-float/, 'The published smoke orbs must include their floating animation.');
+assert.match(css, /project-pitch-deck/, 'The published stylesheet must include the visible pitch deck preview.');
 assert.match(css, /@keyframes atmosphere-drift/, 'The published stylesheet must include the moving smoky background.');
 assert.match(css, /@keyframes sport-float/, 'The published stylesheet must include the sports decoration animation.');
 assert.match(css, /@keyframes smoke-drift/, 'The published stylesheet must include the smoke animation.');
@@ -93,6 +97,9 @@ assert.ok(
   'The published contact card must include the requested email address.',
 );
 assert.match(js, /global-cursor-shadow/, 'The production bundle must include the cursor effect.');
+assert.ok(js.includes('project-pitch-deck'), 'The production bundle must render the pitch deck directly on the Projects page.');
+assert.ok(js.includes('SMASH National Pitch Deck'), 'The production bundle must include the visible SafeLink deck heading.');
+assert.ok(js.includes('safelink-beacon-smash-national-pitch-deck.pdf'), 'The production bundle must reference the SafeLink PDF.');
 for (const filename of ['writing-quill-book.png', 'lacrosse-stick-doodle.png', 'hema-sword-doodle.png']) {
   assert.ok(js.includes(filename), `The production bundle must reference the ${filename} decoration.`);
 }

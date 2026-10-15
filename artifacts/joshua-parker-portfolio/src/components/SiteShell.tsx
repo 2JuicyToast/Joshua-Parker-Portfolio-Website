@@ -49,6 +49,15 @@ export function SiteShell({ children }: PropsWithChildren) {
 
   return (
     <div className="page-shell">
+      <div className="ambient-smoke" aria-hidden="true">
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+        <span className="ambient-smoke-orb" />
+      </div>
       <header className="site-header">
         <Link className="wordmark" href="/" aria-label={`${portfolio.identity.name}, home`}>
           <img className="wordmark-logo" src={publicAsset('parker-monogram.png')} alt="" />

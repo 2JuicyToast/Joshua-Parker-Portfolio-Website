@@ -106,6 +106,12 @@ async function verifyDeployedViewer(attempt) {
   assert.ok(script.includes('jdparker2027@gmail.com'), 'The deployed bundle is missing the public contact email.');
   assert.ok(script.includes('https://github.com/2JuicyToast'), 'The deployed bundle is missing the GitHub profile link.');
   assert.match(script, /global-cursor-shadow/, 'The deployed bundle is missing the cursor effect.');
+  assert.ok(script.includes('project-pitch-deck'), 'The deployed bundle is missing the visible SafeLink pitch deck preview.');
+  assert.ok(script.includes('SMASH National Pitch Deck'), 'The deployed bundle is missing the SafeLink deck heading.');
+  assert.match(stylesheet, /\.global-cursor-shadow\{[^}]*width:120px/, 'The deployed cursor glow is not the requested smaller size.');
+  assert.match(stylesheet, /ambient-smoke-orb/, 'The deployed stylesheet is missing the full-page smoke orbs.');
+  assert.match(stylesheet, /@keyframes smoke-orb-float/, 'The deployed stylesheet is missing the floating smoke animation.');
+  assert.match(stylesheet, /project-pitch-deck/, 'The deployed stylesheet is missing the visible pitch deck preview styles.');
   for (const filename of ['writing-quill-book.png', 'lacrosse-stick-doodle.png', 'hema-sword-doodle.png']) {
     assert.ok(script.includes(filename), `The deployed bundle is missing the ${filename} decoration.`);
   }

@@ -85,6 +85,30 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
                     ))}
                   </div>
                 )}
+                {pageKey === 'projects' && section.entries?.some((entry) => entry.title === 'SafeLink Beacon') && (
+                  <section className="project-pitch-deck" aria-labelledby="project-pitch-deck-title">
+                    <div className="project-pitch-deck-heading">
+                      <p className="eyebrow">SafeLink Beacon · 11-slide presentation</p>
+                      <h2 className="serif" id="project-pitch-deck-title">SMASH National Pitch Deck</h2>
+                      <p className="pdf-viewer-description">
+                        The team’s original presentation about the SafeLink Beacon, its components, system design, and companion app.
+                      </p>
+                    </div>
+                    <iframe
+                      className="pdf-viewer-frame project-deck-frame"
+                      src={`${safeLinkDeckUrl}#page=1&zoom=page-fit`}
+                      title="SafeLink Beacon SMASH National Pitch Deck"
+                    />
+                    <div className="pdf-viewer-actions">
+                      <a className="button button-outline" href={safeLinkDeckUrl} target="_blank" rel="noreferrer">
+                        Open PDF in a new tab <span aria-hidden="true">↗</span>
+                      </a>
+                      <a className="button button-outline" href={safeLinkDeckUrl} download={safeLinkDeckFile}>
+                        Download PDF <span aria-hidden="true">↓</span>
+                      </a>
+                    </div>
+                  </section>
+                )}
                 {section.items && section.items.length > 0 && (
                   <ol className="page-item-grid">
                     {section.items.map((item) => (
@@ -142,7 +166,7 @@ export function PortfolioPage({ pageKey }: { pageKey: PortfolioPageKey }) {
                 </div>
                 <iframe
                   className="pdf-viewer-frame"
-                  src={`${safeLinkDeckUrl}#view=FitH`}
+                  src={`${safeLinkDeckUrl}#page=1&zoom=page-fit`}
                   title="SafeLink Beacon SMASH National Pitch Deck"
                 />
                 <div className="pdf-viewer-actions">
