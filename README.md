@@ -1,5 +1,9 @@
 # Joshua D. Parker Portfolio
 
+**Open the live portfolio (Viewer mode):** <https://2JuicyToast.github.io/Joshua-Parker-Portfolio-Website/>
+
+The GitHub repository page shows this README; use the Pages link above to view the website.
+
 The portfolio runs as a live development preview in Replit and publishes as a static Viewer site on GitHub Pages.
 
 ## Developer mode (Replit)
