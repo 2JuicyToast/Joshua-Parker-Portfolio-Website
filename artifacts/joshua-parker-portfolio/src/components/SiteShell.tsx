@@ -1,6 +1,7 @@
 import { useEffect, useState, type PropsWithChildren } from 'react';
 import { Link, useLocation } from 'wouter';
 import { portfolio } from '../content';
+import { publicAsset } from '../lib/public-asset';
 
 export function SiteShell({ children }: PropsWithChildren) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,7 +95,7 @@ export function SiteShell({ children }: PropsWithChildren) {
     <div className="page-shell">
       <header className="site-header">
         <Link className="wordmark" href="/" aria-label={`${portfolio.identity.name}, home`}>
-          <span className="wordmark-monogram">JP</span>
+          <img className="wordmark-logo" src={publicAsset('parker-monogram.png')} alt="" />
           <span>{portfolio.identity.name}</span>
         </Link>
         <button

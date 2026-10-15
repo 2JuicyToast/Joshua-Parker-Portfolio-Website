@@ -18,7 +18,7 @@ pnpm --filter @workspace/joshua-parker-portfolio run dev
 
 The GitHub Actions workflow builds and publishes the Viewer site after each push or merge to `main`. It also supports manual runs from the Actions tab. The published static build supports the repository's `/Joshua-Parker-Portfolio-Website/` path and direct page reloads.
 
-For the first deployment, set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The expected project-site URL is:
+Set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. This is required for the portfolio workflow to serve the built site; a branch/Jekyll deployment can succeed while publishing the wrong page. The expected project-site URL is:
 
 <https://2JuicyToast.github.io/Joshua-Parker-Portfolio-Website/>
 

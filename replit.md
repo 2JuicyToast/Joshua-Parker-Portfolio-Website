@@ -11,7 +11,7 @@ A personal portfolio showcasing projects, writing, ventures, recognition, intere
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/joshua-parker-portfolio run build:github-pages` — build the GitHub Pages Viewer version, including a nested-route fallback.
-- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; GitHub Pages must be set to deploy from **GitHub Actions** in repository settings.
+- Pushing or merging changes to `main` runs `.github/workflows/deploy-github-pages.yml`; GitHub Pages **Settings → Pages → Build and deployment → Source** must be **GitHub Actions**. A branch/Jekyll deployment can report success while publishing the wrong page.
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
 - No secrets or external services are needed for the current portfolio or API health endpoint. `DATABASE_URL` is required only if adding features that import the existing database library; no database is currently used by these running services.
