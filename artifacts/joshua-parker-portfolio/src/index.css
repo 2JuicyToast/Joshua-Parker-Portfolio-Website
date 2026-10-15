@@ -110,13 +110,10 @@ a { color: inherit; }
 .social-placeholder { color: hsl(var(--foreground) / .74); background: hsl(36 34% 98% / .45); }
 .social-placeholder i { font-style: normal; color: hsl(8 40% 60%); }
 .portrait-stage { min-height: 315px; display: flex; justify-content: center; align-items: center; position: relative; }
-.portrait-card { width: min(100%, 370px); height: 300px; background: linear-gradient(145deg, #eedfdb, #f3e9e2 80%); border: 1px solid #d5c1bd; border-radius: 17px; padding: 29px; position: relative; z-index: 1; box-shadow: 0 20px 45px hsl(337 35% 14% / .055); }
-.portrait-inner { width: 100%; height: 100%; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px solid hsl(337 35% 14% / .13); border-radius: 8px; }
-.portrait-inner::before, .portrait-inner::after { content: ''; position: absolute; border: 1px solid hsl(337 35% 14% / .12); border-radius: 50%; width: 215px; height: 215px; }
-.portrait-inner::after { width: 250px; height: 250px; transform: translate(85px, 110px); }
-.portrait-label { position: relative; z-index: 1; background: hsl(36 37% 96% / .85); border-radius: 4px; padding: 9px 12px; color: hsl(var(--primary)); font-size: 10px; font-weight: 700; }
-.portrait-caption { position: absolute; bottom: 13px; font-size: 9px; color: hsl(var(--foreground) / .58); }
-.portrait-index { position: absolute; bottom: 12px; right: 13px; color: hsl(var(--primary) / .7); font-size: 8px; letter-spacing: .08em; }
+.portrait-card { width: min(100%, 350px); aspect-ratio: .79; height: auto; background: hsl(36 37% 96%); border: 1px solid #d5c1bd; border-radius: 17px; padding: 12px; position: relative; z-index: 1; box-shadow: 0 20px 45px hsl(337 35% 14% / .055); }
+.portrait-inner { width: 100%; height: 100%; position: relative; overflow: hidden; border-radius: 8px; }
+.portrait-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+.portrait-index { position: absolute; bottom: 20px; right: 20px; padding: 5px 7px; border-radius: 3px; color: hsl(var(--primary)); background: hsl(36 37% 96% / .9); font-size: 8px; letter-spacing: .08em; }
 .orbit { position: absolute; display: block; border: 1px solid hsl(8 33% 83% / .65); border-radius: 50%; }
 .orbit-one { width: 240px; height: 240px; right: -58px; top: -22px; }
 .orbit-two { width: 320px; height: 320px; right: -97px; top: -61px; border-color: hsl(8 33% 83% / .35); }
@@ -259,7 +256,7 @@ a { color: inherit; }
   .navigation a { padding: 8px; font-size: 10px; }
   .content-width { width: min(100% - 56px, 700px); }
   .hero { grid-template-columns: 1fr .75fr; gap: 24px; }
-  .portrait-card { height: 260px; padding: 22px; }
+  .portrait-card { padding: 10px; }
   .portrait-stage { min-height: 270px; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
   .skill-card:last-child { grid-column: span 2; }
@@ -283,7 +280,7 @@ a { color: inherit; }
   .button { padding: 11px 12px; font-size: 10px; gap: 8px; }
   .social-list { flex-wrap: wrap; gap: 6px; margin-top: 12px; }
   .portrait-stage { min-height: 230px; margin: 0 8px; }
-  .portrait-card { height: 220px; width: min(100%, 365px); }
+  .portrait-card { width: min(100%, 350px); padding: 10px; }
   .orbit-one { right: -35px; }
   .orbit-two { right: -65px; }
   .principle-band { grid-template-columns: 28px 1fr; gap: 9px; padding: 24px 20px 26px; border-radius: 11px; }

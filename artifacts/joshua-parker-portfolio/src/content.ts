@@ -57,8 +57,6 @@ export const portfolio = {
     headline: 'Dual Enrollment Computer Engineering Student | Innovator | Writer.',
     introduction:
       'Class of 2027 dual-enrollment computer engineering student from Dover, Delaware. I build technology, share my ideas through writing, and explore how innovation can be useful, responsible, and people-focused.',
-    portraitLabel: 'Professional photo placeholder',
-    portraitNote: 'A portrait can be added here when one is available.',
   },
   navigation: [
     { id: 'home', label: 'Home', href: '/' },
@@ -219,11 +217,11 @@ export const portfolio = {
   contact: {
     eyebrow: 'Let’s connect',
     title: 'Contact Me',
-    body: 'Contact details can be connected here when they’re ready.',
+    body: 'Reach me by phone or connect through my professional profiles.',
     emailLabel: 'Email · address placeholder',
-    phoneLabel: 'Phone · number placeholder',
+    phoneLabel: 'Phone · +1 (347) 902-7157',
     email: '',
-    phone: '',
+    phone: '+13479027157',
   },
 };
 

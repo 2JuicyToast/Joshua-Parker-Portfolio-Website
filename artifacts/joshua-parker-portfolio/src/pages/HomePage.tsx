@@ -35,11 +35,10 @@ export function HomePage() {
             ))}
           </div>
         </div>
-        <aside className="portrait-stage reveal reveal-delay-2" aria-label={identity.portraitLabel}>
+        <aside className="portrait-stage reveal reveal-delay-2" aria-label="Portrait">
           <div className="portrait-card">
             <div className="portrait-inner">
-              <span className="portrait-label">{identity.portraitLabel}</span>
-              <span className="portrait-caption">{identity.portraitNote}</span>
+              <img className="portrait-image" src="/joshua-parker.jpg" alt={`Portrait of ${identity.name}`} />
             </div>
             <span className="portrait-index mono">01 / JP</span>
           </div>
