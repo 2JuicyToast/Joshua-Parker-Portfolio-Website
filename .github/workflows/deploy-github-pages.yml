@@ -64,7 +64,7 @@ jobs:
           cp -a "$SITE_DIRECTORY/." .
 
           expected_root="$(printf '%s\n' '.nojekyll' '404.html' 'assets' 'index.html' 'robots.txt' 'script.js' 'styles.css' | sort)"
-          actual_root="$(find . -mindepth 1 -maxdepth 1 -printf '%f\n' | sort)"
+          actual_root="$(find . -mindepth 1 -maxdepth 1 ! -name .git -printf '%f\n' | sort)"
           if [ "$actual_root" != "$expected_root" ]; then
             echo "Unexpected gh-pages root contents. The branch must contain the Viewer site, not the repository README."
             printf 'Expected:\n%s\nActual:\n%s\n' "$expected_root" "$actual_root"
